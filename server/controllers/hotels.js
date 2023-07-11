@@ -34,3 +34,21 @@ export const updateHotel = async ( request, response ) => {
         response.status(500).json(error);
     }
 }
+
+// ###################################
+
+// update Hotel
+export const deleteHotel = async ( request, response ) => {
+    // Destruct The ID From The Request
+    const { id } = request.params;
+
+    try {
+        // Delete The Hotel From The Database
+        const deletedHotel = await Hotel.findByIdAndDelete(id);
+        // Send The Deleted Hotel As A Response To The Client
+        response.status(200).json(deletedHotel);
+    } catch (error) {
+        // Send The Error As A Response To The Client
+        response.status(500).json(error);
+    }
+}
