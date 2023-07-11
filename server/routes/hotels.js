@@ -1,15 +1,19 @@
 // Modules & Variables
 import express from "express";
-import { createHotel, updateHotel, deleteHotel } from "../controllers/hotels.js";
+import { createHotel, updateHotel, deleteHotel, getHotel, getHotels } from "../controllers/hotels.js";
 const router = express.Router();
 
 // ################################################
 
 // Routes
-router.route("/").post(createHotel);
+router.route("/")
+.post(createHotel)
+.get(getHotels);
+
 router.route("/:id")
 .put(updateHotel)
-.delete(deleteHotel);
+.delete(deleteHotel)
+.get(getHotel);
 
 // ################################################
 
