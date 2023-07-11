@@ -2,6 +2,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
+import customError from "./middlewares/errors.js";
 import authRoute from "./routes/auth.js";
 import hotelsRoute from "./routes/hotels.js";
 import roomsRoute from "./routes/rooms.js";
@@ -27,6 +28,7 @@ server.use("/api/v1/auth", authRoute);
 server.use("/api/v1/hotels", hotelsRoute);
 server.use("/api/v1/rooms", roomsRoute);
 server.use("/api/v1/users", usersRoute);
+server.use(customError);
 
 // ################################################
 
