@@ -2,6 +2,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
+import cookieParser from "cookie-parser";
 import customError from "./middlewares/errors.js";
 import authRoute from "./routes/auth.js";
 import hotelsRoute from "./routes/hotels.js";
@@ -22,6 +23,7 @@ dotenv.config();
 // ################################################
 
 // Middlewares
+server.use(cookieParser());
 server.use(express.json());
 server.use(express.urlencoded({ extended: false }));
 server.use("/api/v1/auth", authRoute);

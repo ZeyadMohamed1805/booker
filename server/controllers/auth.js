@@ -1,7 +1,8 @@
 // Modules & Variables
 import User from "../models/users.js";
-import createError from "../utils/errors.js";
-import hashPassword from "../utils/hashpassword.js";
+import jwt from "jsonwebtoken";
+import createError from "../utils/createError.js";
+import hashPassword from "../utils/hashPassword.js";
 import comparePassword from "../utils/comparePassword.js";
 
 // ###########################################################################
@@ -44,8 +45,10 @@ export const login = async ( request, response, next ) => {
         // Check If Passwords Don't Match
         if ( !paswordCheck ) return next(createError(400, "Incorrect Username Or Password"));
 
+        // Create JWT Token
+        const token = jwt.sign({ id: user._id, isAdmin: user.isAdmin }, process.env.JWT_SECRET, { expiresIn: process.env.JWT_LIFETIME });
         // Send The User As A Response To The Client
-        response.status(200).json(user);
+        response.cookie("access_token", token, { httpOnly: true }).status(200).json(user);
     } catch (error) {
         // Send The Error As A Response To The Client
         return next(createError(500, "Login Failed..."));

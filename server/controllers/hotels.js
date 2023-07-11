@@ -1,6 +1,6 @@
 // Modules & Variables
 import Hotel from "../models/hotels.js";
-import createError from "../utils/errors.js";
+import createError from "../utils/createError.js";
 
 // Create Hotel
 export const createHotel = async ( request, response ) => {
