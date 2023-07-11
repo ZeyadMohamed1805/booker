@@ -21,6 +21,8 @@ dotenv.config();
 // ################################################
 
 // Middlewares
+server.use(express.json());
+server.use(express.urlencoded({ extended: false }));
 server.use("/api/v1/auth", authRoute);
 server.use("/api/v1/hotels", hotelsRoute);
 server.use("/api/v1/rooms", roomsRoute);
@@ -31,7 +33,10 @@ server.use("/api/v1/users", usersRoute);
 // Connect To Database
 const connectDatabase = async () => {
     try {
-        await mongoose.connect(process.env.MONGO);
+        await mongoose.connect(process.env.MONGO, { 
+            useNewUrlParser: true,
+            useUnifiedTopology: true
+        });
         console.log("Connected To Database...");
     } catch (error) {
         throw error;
