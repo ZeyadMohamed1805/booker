@@ -16,7 +16,9 @@ module.exports = {
       },
       colors: {
         primary: "#003580",
-        customWhite: "#fff"
+        customBlue: "#0071c2",
+        customWhite: "#fff",
+        customGold: "#febb02"
       }
     },
   },

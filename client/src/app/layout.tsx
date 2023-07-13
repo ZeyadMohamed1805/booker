@@ -1,7 +1,7 @@
 import '@/styles/globals.css';
 import type { Metadata } from 'next';
 import { ChildrenType } from '@/utils/types';
-import { Navbar, Footer } from '@/components';
+import { Navbar, Header, Footer } from '@/components';
 
 export const metadata: Metadata = {
     title: 'Booker | Hotel Booking App',
@@ -15,6 +15,7 @@ const RootLayout = ({ children }: ChildrenType) => (
         </head>
         <body className="font-primary">
             <Navbar />
+            <Header />
             {children}
             <Footer />
         </body>
