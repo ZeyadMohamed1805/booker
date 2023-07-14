@@ -4,7 +4,7 @@ import { OptionProps } from "@/utils/types";
 
 const Option = ({ option, setOption }: OptionProps) => {
     return (
-        <div  className="w-full flex justify-between gap-3">
+        <div className="w-full flex justify-between gap-3">
             <span>
                 {
                     option[0]

@@ -64,7 +64,7 @@ const Header = () => {
                         {
                             openDate &&
                             <DateRange 
-                                className="absolute top-20 max-xl:top-1/2 shadow-lg max-xl:left-0"
+                                className="absolute top-20 max-xl:top-1/2 shadow-lg max-xl:left-0 z-20"
                                 editableDateInputs={true}
                                 moveRangeOnFirstSelection={false}
                                 onChange={item => setDate([ item.selection ])}
@@ -72,7 +72,7 @@ const Header = () => {
                             />
                         }
                     </div>
-                    <div className="max-xl:w-full flex items-center gap-5">
+                    <div className="max-xl:w-full flex items-center gap-5 z-20">
                         <FontAwesomeIcon icon={faPeopleGroup} className="text-2xl w-8 text-gray-400" />
                         <span onClick={() => setOpenOptions(previous => !previous)} className="max-xl:w-full text-gray-400 cursor-pointer border-solid border-2 outline-none border-gray-400 p-2 rounded-md">
                             {`${options.Adults} Adults - ${options.Children} Children - ${options.Rooms} Rooms`}
