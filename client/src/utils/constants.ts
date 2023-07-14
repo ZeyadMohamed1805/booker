@@ -25,3 +25,7 @@ export const guestList = [
     { header: "Prisco El Tisa", subheader: "El Salvador", image: "/images/features.jpeg", price: 547, rating: 8.4, grade: "Excellent" },
     { header: "Bueno", subheader: "Rome", image: "/images/features.jpeg", price: 354, rating: 9.2, grade: "Excellent" }
 ]
+
+export const footerLinks = [
+    "Countries", "Regions", "Cities", "Districts", "Airports", "Hotels"
+]
