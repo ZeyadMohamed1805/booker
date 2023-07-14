@@ -2,8 +2,8 @@ import { PropertyItemProps } from "@/utils/types"
 
 const PropertyItem = ({ content }: PropertyItemProps) => {
   return (
-    <div className="rounded-md overflow-hidden cursor-pointer shadow-lg">
-        <img src={content.image} alt={content.header} className="w-[200px] object-cover" />
+    <div className="rounded-md overflow-hidden cursor-pointer shadow-lg w-[200px] max-[480px]:w-[350px]">
+        <img src={content.image} alt={content.header} className="w-full object-cover" />
         <div className="p-3">
             <h1 className="text-2xl font-semibold">
                 {

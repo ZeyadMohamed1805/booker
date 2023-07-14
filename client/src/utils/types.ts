@@ -21,7 +21,7 @@ export type OptionProps = {
     setOption: (name: string, opertion: string) => void
 }
 
-export type FeaturesProps = {
+export type FeatureItemProps = {
     content: {
         header: string,
         subheader: number,
@@ -29,7 +29,18 @@ export type FeaturesProps = {
     }
 }
 
-export type PropertyItemProps = FeaturesProps;
+export type GuestItemProps = {
+    content: {
+        header: string,
+        subheader: string,
+        image: string,
+        price: number,
+        rating: number,
+        grade: string
+    }
+}
+
+export type PropertyItemProps = FeatureItemProps;
 
 // Hooks Types
 

@@ -6,6 +6,8 @@ import ListItem from "./layouts/ListItem";
 import Option from "./layouts/Option";
 
 // Home Components
-import Features from "./home/Features";
+import FeatureItem from "./home/FeatureItem";
+import PropertyItem from "./home/PropertyItem";
+import GuestItem from "./home/GuestItem";
 
-export { Navbar, Header, ListItem, Option, Footer, Features };
+export { Navbar, Header, ListItem, Option, Footer, FeatureItem, PropertyItem, GuestItem };
