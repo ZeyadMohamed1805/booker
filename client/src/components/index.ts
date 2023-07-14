@@ -9,5 +9,6 @@ import Option from "./layouts/Option";
 import FeatureItem from "./home/FeatureItem";
 import PropertyItem from "./home/PropertyItem";
 import GuestItem from "./home/GuestItem";
+import Mail from "./home/Mail";
 
-export { Navbar, Header, ListItem, Option, Footer, FeatureItem, PropertyItem, GuestItem };
+export { Navbar, Header, ListItem, Option, Footer, FeatureItem, PropertyItem, GuestItem, Mail };
