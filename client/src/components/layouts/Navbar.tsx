@@ -1,6 +1,6 @@
 const Navbar = () => (
     <nav className="bg-primary flex justify-center p-5">
-        <div className="w-full text-customWhite flex items-center justify-between max-w-[1200px]">
+        <div className="w-full text-customWhite flex items-center justify-between max-w-[1400px]">
             <img src="/images/navbar-logo.png" alt="Booker" className="w-48" />
             <ul className="flex gap-5 text-primary text-xl duration-200 font-semibold">
                 <li className="cursor-pointer p-2 rounded-md uppercase bg-customWhite hover:bg-opacity-50 duration-200">

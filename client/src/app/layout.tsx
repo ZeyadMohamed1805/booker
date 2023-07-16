@@ -1,7 +1,7 @@
 import '@/styles/globals.css';
 import type { Metadata } from 'next';
 import { ChildrenType } from '@/utils/types';
-import { Navbar, Header, Footer } from '@/components';
+import { Navbar, Footer, Header } from '@/components';
 
 export const metadata: Metadata = {
     title: 'Booker | Hotel Booking App',
