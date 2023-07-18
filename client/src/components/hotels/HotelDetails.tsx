@@ -13,18 +13,20 @@ const HotelDetails = () => {
         <>
             {
                 open &&
-                <div className="fixed top-0 left-0 w-screen h-screen bg-customWhite bg-opacity-30 z-50 flex items-center">
-                    <div className="absolute top-3 right-3 w-10 h-10 rounded-full text-3xl bg-customWhite cursor-pointer">
-                        <FontAwesomeIcon icon={faCircleXmark} onClick={() => setOpen(false)} className="w-10 h-10 text-3xl rounded-full text-customBlue" />
-                    </div>
-                    <div className="fixed left-0 m-10 text-3xl w-10 h-10 rounded-full cursor-pointer bg-customWhite">
-                        <FontAwesomeIcon icon={faCircleArrowLeft} onClick={() => slideNumber > 0 && setSlideNumber(previous => --previous)} className="text-3xl w-10 h-10 text-customBlue" />
-                    </div>
-                    <div className="w-full h-full flex justify-center items-center">
-                        <img src="/images/features.jpeg" alt="Image" className=" mx-5 max-w-[850px] w-full max-h-4/5" />
-                    </div>
-                    <div className="fixed right-0 m-10 text-3xl w-10 h-10 rounded-full cursor-pointer bg-customWhite">
-                        <FontAwesomeIcon icon={faCircleArrowRight} onClick={() => slideNumber < 5 && setSlideNumber(previous => ++previous)} className="text-3xl w-10 h-10 text-customBlue" />
+                <div className="fixed top-0 left-0 w-screen h-screen bg-customWhite bg-opacity-30 z-50 flex items-center justify-center">
+                    <div className="relative w-screen height-screen max-w-[1400px] flex items-center">
+                        <div className="absolute top-3 right-3 w-10 h-10 rounded-full text-3xl bg-customWhite cursor-pointer">
+                            <FontAwesomeIcon icon={faCircleXmark} onClick={() => setOpen(false)} className="w-10 h-10 text-3xl rounded-full text-customBlue" />
+                        </div>
+                        <div className="absolute left-0 m-10 text-3xl w-10 h-10 rounded-full cursor-pointer bg-customWhite">
+                            <FontAwesomeIcon icon={faCircleArrowLeft} onClick={() => slideNumber > 0 && setSlideNumber(previous => --previous)} className="text-3xl w-10 h-10 text-customBlue" />
+                        </div>
+                        <div className="w-full h-full flex justify-center items-center">
+                            <img src="/images/features.jpeg" alt="Image" className=" mx-5 max-w-[850px] w-full max-h-4/5" />
+                        </div>
+                        <div className="absolute right-0 m-10 text-3xl w-10 h-10 rounded-full cursor-pointer bg-customWhite">
+                            <FontAwesomeIcon icon={faCircleArrowRight} onClick={() => slideNumber < 5 && setSlideNumber(previous => ++previous)} className="text-3xl w-10 h-10 text-customBlue" />
+                        </div>
                     </div>
                 </div>
             }
@@ -51,11 +53,11 @@ const HotelDetails = () => {
                         Reserve or Book Now!
                     </button>
                 </div>
-                <div className="max-w-[1400px] flex flex-wrap justify-between gap-x-[1.5%] gap-y-[5%] rounded-md overflow-hidden mx-5">
+                <div className="min-h-fit max-w-[1400px] flex flex-wrap justify-between gap-x-[1.5%] gap-y-[5%] max-[850px]:gap-y-[3%] max-[500px]:gap-y-[1.5%] max-[500px]:mb-28 rounded-md mx-5">
                     {
                         Array.from(Array(6).keys()).map((image, index) => (
-                            <div key={index} className="h-[49%] w-[32%]">
-                                <img onClick={() => {setSlideNumber(index); setOpen(true)}} src="/images/features.jpeg" alt="Image" className="w-full object-cover" />
+                            <div key={index} className="h-[49%] w-[32%] max-[850px]:w-[49%] max-[850px]:h-[32%] max-[500px]:w-[100%] max-[500px]:h-[16.67%]">
+                                <img onClick={() => {setSlideNumber(index); setOpen(true)}} src="/images/features.jpeg" alt="Image" className="w-full object-cover cursor-pointer rounded-md hover:scale-[1.05] duration-200" />
                             </div>
                         ))
                     }

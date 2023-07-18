@@ -1,8 +1,13 @@
-import { GuestItemProps } from "@/utils/types"
+"use client";
+
+import { useRouter } from "next/navigation";
+import { GuestItemProps } from "@/utils/types";
 
 const GuestItem = ({ content }: GuestItemProps) => {
+    const { push } = useRouter();
+    
     return (
-        <div className=" w-[350px] gap-3 flex flex-col rounded-md overflow-hidden shadow-lg cursor-pointer">
+        <div onClick={() => push(`/hotels/${content.id}`)} className=" w-[350px] gap-3 flex flex-col rounded-md overflow-hidden shadow-lg cursor-pointer hover:scale-[1.05] duration-200">
             <img src={content.image} alt={content.header} className="w-full" />
             <div className="flex flex-col gap-3 p-3">
                 <span className="font-semibold text-xl">

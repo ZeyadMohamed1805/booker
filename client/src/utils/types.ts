@@ -23,6 +23,7 @@ export type OptionProps = {
 
 export type FeatureItemProps = {
     content: {
+        id: string,
         header: string,
         subheader: number,
         image: string
@@ -31,6 +32,7 @@ export type FeatureItemProps = {
 
 export type GuestItemProps = {
     content: {
+        id: string
         header: string,
         subheader: string,
         image: string,
