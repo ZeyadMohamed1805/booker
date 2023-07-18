@@ -9,7 +9,7 @@ const Filters = () => {
     const [ openDate, setOpenDate ] = useState(false);
 
     return (
-        <div className="w-[300px] h-fit flex flex-col gap-3 p-3 rounded-md sticky top-10 bg-customGold shadow-lg">
+        <div className="w-[300px] max-[800px]:hidden h-fit flex flex-col gap-3 p-3 rounded-md sticky top-10 bg-customGold shadow-lg">
             <div className="flex-1">
                 <h1 className="text-xl font-bold mb-4">
                     Search

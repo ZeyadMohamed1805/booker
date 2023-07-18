@@ -6,9 +6,9 @@ const FilterItem = ({ content }: any) => {
     const { push } = useRouter();
 
     return (
-    <div className="border-solid border-customBlue border-4 p-3 rounded-md flex gap-6 max-lg:flex-col">
-        <img src={content.image} alt={content.header} className="w-96 object-cover rounded-md max-xl:w-full" />
-        <div className="w-full flex gap-10 max-xl:flex-col">
+    <div className="border-solid border-customBlue border-4 p-3 rounded-md flex gap-6 max-md:flex-col">
+        <img src={content.image} alt={content.header} className="w-96 object-cover rounded-md max-lg:w-full" />
+        <div className="w-full flex gap-10 max-lg:flex-col">
             <div className="flex flex-col gap-3 flex-2">
                 <h1 className="text-2xl text-customBlue">
                     {

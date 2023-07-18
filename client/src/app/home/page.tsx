@@ -1,9 +1,9 @@
-import { Search, FeatureItem, PropertyItem, GuestItem, Mail } from "@/components";
+import { Intro, FeatureItem, PropertyItem, GuestItem, Mail } from "@/components";
 import { featureList, propertyList, guestList } from "@/utils/constants";
 
 const Home = () => (
     <>
-        <Search />
+        <Intro />
         <div className="flex flex-col gap-20 items-center">
             <div className="w-full max-w-[1400px] mt-24 flex flex-col items-center gap-16 z-10 p-5">
                 <div className="w-full flex flex-wrap justify-between gap-10 max-xl:mt-20 max-[780px]:justify-center">
