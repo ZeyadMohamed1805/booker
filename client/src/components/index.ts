@@ -4,6 +4,7 @@ import Search from "./common/Search";
 
 // Layouts Components
 import Navbar from "./layouts/Navbar";
+import Sidebar from "./layouts/Sidebar";
 import Footer from "./layouts/Footer";
 import Header from "./layouts/Header";
 import ListItem from "./layouts/ListItem";
@@ -18,4 +19,4 @@ import GuestItem from "./home/GuestItem";
 // Hotels Components
 import FilterItem from "./hotels/FilterItem";
 
-export { Navbar, Header, Intro, ListItem, Option, Footer, FeatureItem, PropertyItem, GuestItem, Mail, FilterItem, Search };
+export { Navbar, Sidebar, Header, Intro, ListItem, Option, Footer, FeatureItem, PropertyItem, GuestItem, Mail, FilterItem, Search };
