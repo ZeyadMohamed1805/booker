@@ -1,12 +1,25 @@
 // Modules & Variables
 import express from "express";
-import { roomsController } from "../controllers/rooms.js";
+import { createRoom, updateRoom, deleteRoom, getRoom, getRooms } from "../controllers/rooms.js";
+import { verifyAdmin } from "../middlewares/verify.js";
 const router = express.Router();
 
 // ################################################
 
-// Routes
-router.route("/").get(roomsController);
+// Create Room
+router.post("/:hotelID", verifyAdmin, createRoom);
+
+// Update Room
+router.put("/:id", verifyAdmin, updateRoom);
+
+// Delete Room
+router.delete("/:id/:hotelID", verifyAdmin, deleteRoom);
+
+// Get Rooms
+router.get("/", getRooms);
+
+// Get Room
+router.get("/:id", getRoom);
 
 // ################################################
 

@@ -1,12 +1,13 @@
 // Modules & Variables
 import express from "express";
-import { authController } from "../controllers/auth.js";
+import { register, login } from "../controllers/auth.js";
 const router = express.Router();
 
 // ################################################
 
 // Routes
-router.route("/").get(authController);
+router.route("/register").post(register);
+router.route("/login").post(login);
 
 // ################################################
 
