@@ -2,8 +2,6 @@
 import express from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
-import cookieParser from "cookie-parser";
-import customError from "./middlewares/errors.js";
 import authRoute from "./routes/auth.js";
 import hotelsRoute from "./routes/hotels.js";
 import roomsRoute from "./routes/rooms.js";
@@ -23,24 +21,17 @@ dotenv.config();
 // ################################################
 
 // Middlewares
-server.use(cookieParser());
-server.use(express.json());
-server.use(express.urlencoded({ extended: false }));
 server.use("/api/v1/auth", authRoute);
 server.use("/api/v1/hotels", hotelsRoute);
 server.use("/api/v1/rooms", roomsRoute);
 server.use("/api/v1/users", usersRoute);
-server.use(customError);
 
 // ################################################
 
 // Connect To Database
 const connectDatabase = async () => {
     try {
-        await mongoose.connect(process.env.MONGO, { 
-            useNewUrlParser: true,
-            useUnifiedTopology: true
-        });
+        await mongoose.connect(process.env.MONGO);
         console.log("Connected To Database...");
     } catch (error) {
         throw error;
