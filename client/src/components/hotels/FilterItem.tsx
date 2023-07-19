@@ -60,7 +60,7 @@ const FilterItem = ({ content }: any) => {
                     <span className="text-gray-400">
                         Includes taxes and fees
                     </span>
-                    <button onClick={() => push(`/hotels/${content.id}`)} className="w-full bg-customBlue text-customWHite font-bold p-3 text-customWhite rounded-md hover:bg-opacity-50 duration-200">
+                    <button onClick={() => push(`/hotels/${content._id}`)} className="w-full bg-customBlue text-customWHite font-bold p-3 text-customWhite rounded-md hover:bg-opacity-50 duration-200">
                         See Availability
                     </button>
                 </div>
