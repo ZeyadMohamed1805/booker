@@ -76,10 +76,10 @@ export const getHotel = async ( request, response, next ) => {
 
 // Get Hotels
 export const getHotels = async ( request, response, next ) => {
-    const { limit } = request.query;
+    const { city, limit } = request.query;
     try {
         // Get The Hotels From The Database
-        const hotels = await Hotel.find().limit(limit);
+        const hotels = await Hotel.find({ city: city }).limit(limit);
         // Send The Hotels As A Response To The Client
         response.status(200).json(hotels);
     } catch (error) {

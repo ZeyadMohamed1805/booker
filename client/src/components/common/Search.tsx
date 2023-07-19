@@ -65,7 +65,7 @@ const Search = ({ page, params }: any) => {
                 }
             </div>
             <div className="max-xl:w-full max-xl:justify-center flex items-center gap-5">
-                <button onClick={() => page === "home" && push(`/hotels?city=${searchValue}&start=${format(date[0].startDate, "MM/dd/yyyy")}&end=${format(date[0].endDate, "MM/dd/yyyy")}&options=${Object.entries(options)}`)} className="max-xl:w-full bg-customBlue text-white font-bold p-3 rounded-md cursor-pointer hover:bg-opacity-50 duration-200">
+                <button onClick={() => push(`/hotels?city=${searchValue}&start=${format(date[0].startDate, "MM/dd/yyyy")}&end=${format(date[0].endDate, "MM/dd/yyyy")}&options=${Object.entries(options)}`)} className="max-xl:w-full bg-customBlue text-white font-bold p-3 rounded-md cursor-pointer hover:bg-opacity-50 duration-200">
                     Search
                 </button>
             </div>
