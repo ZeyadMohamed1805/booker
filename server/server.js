@@ -2,6 +2,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
+import cors from "cors";
 import cookieParser from "cookie-parser";
 import customError from "./middlewares/errors.js";
 import authRoute from "./routes/auth.js";
@@ -23,6 +24,7 @@ dotenv.config();
 // ################################################
 
 // Middlewares
+server.use(cors());
 server.use(cookieParser());
 server.use(express.json());
 server.use(express.urlencoded({ extended: false }));

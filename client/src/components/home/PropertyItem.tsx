@@ -2,9 +2,11 @@
 
 import { useRouter } from "next/navigation";
 import { PropertyItemProps } from "@/utils/types";
+import useApi from "@/utils/useApi";
 
-const PropertyItem = ({ content }: PropertyItemProps) => {
+const PropertyItem = ({ index, content }: PropertyItemProps) => {
     const { push } = useRouter();
+    const { data, isLoading } = useApi("hotels_by_types", "/hotels/type?types=hotels,apartments,resorts,villas,cabins");
     
     return (
         <div onClick={() => push(`/hotels/${content.id}`)} className="rounded-md overflow-hidden cursor-pointer shadow-lg w-[200px] max-[480px]:w-[350px] hover:scale-[1.05] duration-200">
@@ -17,7 +19,7 @@ const PropertyItem = ({ content }: PropertyItemProps) => {
                 </h1>
                 <h2 className="text-xl">
                     {
-                        `${content.subheader} hotels`
+                        isLoading ? "Loading..." : `${data[index]} hotels`
                     }
                 </h2>
             </div>

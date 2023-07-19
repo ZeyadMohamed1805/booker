@@ -76,11 +76,48 @@ export const getHotel = async ( request, response, next ) => {
 
 // Get Hotels
 export const getHotels = async ( request, response, next ) => {
+    const { limit } = request.query;
     try {
         // Get The Hotels From The Database
-        const hotels = await Hotel.find();
+        const hotels = await Hotel.find().limit(limit);
         // Send The Hotels As A Response To The Client
         response.status(200).json(hotels);
+    } catch (error) {
+        // Send The Error As A Response To The Client
+        next(createError(500, "Get Hotels Failed..."));
+    }
+}
+
+// ###################################
+
+// Get Hotels By City
+export const getHotelsByCity = async ( request, response, next ) => {
+    // Extract The Cities From The Request Query
+    const cities = request.query.cities.split(",");
+
+    try {
+        // // Get The Hotel Counts In The Requested Cities From The Database
+        const list = await Promise.all(cities.map(city => (Hotel.countDocuments({ city: city }))));
+        // Send The Hotels As A Response To The Client
+        response.status(200).json(list);
+    } catch (error) {
+        // Send The Error As A Response To The Client
+        next(createError(500, "Get Hotels Failed..."));
+    }
+}
+
+// ###################################
+
+// Get Hotels By Type
+export const getHotelsByType = async ( request, response, next ) => {
+    // Extract The Types From The Request Query
+    const types = request.query.types.split(",");
+
+    try {
+        // // Get The Hotel Counts With The Requested Types From The Database
+        const list = await Promise.all(types.map(type => (Hotel.countDocuments({ type: type }))));
+        // Send The Hotels As A Response To The Client
+        response.status(200).json(list);
     } catch (error) {
         // Send The Error As A Response To The Client
         next(createError(500, "Get Hotels Failed..."));

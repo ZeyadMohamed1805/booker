@@ -22,6 +22,7 @@ export type OptionProps = {
 }
 
 export type FeatureItemProps = {
+    index: number,
     content: {
         id: string,
         header: string,
@@ -32,11 +33,11 @@ export type FeatureItemProps = {
 
 export type GuestItemProps = {
     content: {
-        id: string
-        header: string,
-        subheader: string,
-        image: string,
-        price: number,
+        _id: string
+        name: string,
+        city: string,
+        photos: Array<string>,
+        cheapestPrice: number,
         rating: number,
         grade: string
     }

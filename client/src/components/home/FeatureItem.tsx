@@ -2,9 +2,11 @@
 
 import { useRouter } from "next/navigation";
 import { FeatureItemProps } from "@/utils/types";
+import useApi from "@/utils/useApi";
 
-const FeatureItem = ({ content }: FeatureItemProps) => {
+const FeatureItem = ({ index, content }: FeatureItemProps) => {
     const { push } = useRouter();
+    const { data, isLoading } = useApi("hotels_cities_count", "/hotels/city?cities=berlin,madrid,london");
     
     return (
         <div onClick={() => push(`/hotels/${content.id}`)}>
@@ -18,7 +20,7 @@ const FeatureItem = ({ content }: FeatureItemProps) => {
                     </h1>
                     <h2 className="absolute bottom-5 left-10 text-xl">
                         {
-                            `${content.subheader} properties`
+                            isLoading ? "Loading..." : `${data[index]} properties`
                         }
                     </h2>
                 </div>

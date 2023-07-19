@@ -8,7 +8,7 @@ const Mail = () => (
         </span>
         <div className="max-w-[500px] flex items-center">
             <input type="text" placeholder="Your Email" className="w-full p-5 rounded-l-md text-gray-500 text-lg outline-none" />
-            <button className="p-5 rounded-r-md bg-customBlue text-lg hover:opacity-50">
+            <button className="p-5 rounded-r-md bg-customBlue text-lg hover:opacity-50 font-bold">
                 Subscribe
             </button>
         </div>
