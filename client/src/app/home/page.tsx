@@ -1,8 +1,9 @@
 import { Intro, FeatureItem, PropertyItem, GuestItem, Mail } from "@/components";
 import client from "@/utils/client";
-import { featureList, propertyList } from "@/utils/constants";
 
 const Home = async () => {
+    const { data: featureItems } = await client.get("/hotels/city?cities=berlin,madrid,london");
+    const { data: propertyItems } = await client.get("/hotels/type?types=hotels,apartments,resorts,villas,cabins");
     const { data: guestItems } = await client.get("/hotels?limit=3");
 
     return (
@@ -12,8 +13,8 @@ const Home = async () => {
                 <div className="w-full max-w-[1400px] mt-24 flex flex-col items-center gap-16 z-10 p-5">
                     <div className="w-full flex flex-wrap justify-between gap-10 max-xl:mt-20 max-[780px]:justify-center">
                         {
-                            featureList.map((feature, index) => (
-                                <FeatureItem key={index} index={index} content={feature} />
+                            featureItems.map((feature: any, index: number) => (
+                                <FeatureItem key={index} count={featureItems.length} content={feature} />
                             ))
                         }
                     </div>
@@ -24,8 +25,8 @@ const Home = async () => {
                     </h1>
                     <div className="w-full flex flex-wrap justify-between items-center gap-10 max-[480px]:justify-center">
                         {
-                            propertyList.map((item, index) => (
-                                <PropertyItem key={index} index={index} content={item} />
+                            propertyItems.map((item: any, index: number) => (
+                                <PropertyItem key={index} count={propertyItems.length} content={item} />
                             ))
                         }
                     </div>

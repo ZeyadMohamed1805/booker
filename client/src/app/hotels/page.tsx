@@ -2,7 +2,6 @@
 
 import { FilterItem, Search } from "@/components";
 import client from "@/utils/client";
-import { filterItems } from "@/utils/constants";
 
 const Hotels = async ({ params, searchParams }: any) => {
     const { data } = await client.get(`/hotels?city=${searchParams.city}`);
@@ -19,7 +18,7 @@ const Hotels = async ({ params, searchParams }: any) => {
                                 No Hotels Found...
                             </h1> :
                             data.map((item: any) => (
-                                <FilterItem key={item.id} content={item} />
+                                <FilterItem key={item._id} content={item} />
                             ))
                         }
                     </div>

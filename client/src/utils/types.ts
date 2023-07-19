@@ -22,13 +22,13 @@ export type OptionProps = {
 }
 
 export type FeatureItemProps = {
-    index: number,
-    content: {
-        id: string,
-        header: string,
+    count: number,
+    content: [{
+        _id: string,
+        name: string,
         subheader: number,
         image: string
-    }
+    }]
 }
 
 export type GuestItemProps = {

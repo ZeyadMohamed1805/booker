@@ -2,25 +2,23 @@
 
 import { useRouter } from "next/navigation";
 import { FeatureItemProps } from "@/utils/types";
-import useApi from "@/utils/useApi";
 
-const FeatureItem = ({ index, content }: FeatureItemProps) => {
+const FeatureItem = ({ count, content }: FeatureItemProps) => {
     const { push } = useRouter();
-    const { data, isLoading } = useApi("hotels_cities_count", "/hotels/city?cities=berlin,madrid,london");
     
     return (
-        <div onClick={() => push(`/hotels/${content.id}`)}>
+        <div onClick={() => push(`/hotels/${content[0]._id}`)}>
             <div className="relative text-customWhite rounded-md overflow-hidden w-[350px] shadow-lg cursor-pointer hover:scale-[1.05] duration-200">
-                <img src={content.image} alt={content.header} className="w-full object-cover" />
+                <img src={"https://as1.ftcdn.net/v2/jpg/00/29/13/38/1000_F_29133877_bfA2n7cWV53fto2BomyZ6pyRujJTBwjd.jpg"} alt={content[0].name} className="w-full object-cover" />
                 <div>
                     <h1 className="absolute bottom-12 left-10 text-2xl font-semibold">
                         {
-                            content.header
+                            content[0].name
                         }
                     </h1>
                     <h2 className="absolute bottom-5 left-10 text-xl">
                         {
-                            isLoading ? "Loading..." : `${data[index]} properties`
+                            `${count} properties`
                         }
                     </h2>
                 </div>

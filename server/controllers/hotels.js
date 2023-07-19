@@ -79,7 +79,7 @@ export const getHotels = async ( request, response, next ) => {
     const { city, limit } = request.query;
     try {
         // Get The Hotels From The Database
-        const hotels = await Hotel.find({ city: city }).limit(limit);
+        const hotels = city ? await Hotel.find({ city: city }).limit(limit) : await Hotel.find().limit(limit);
         // Send The Hotels As A Response To The Client
         response.status(200).json(hotels);
     } catch (error) {
@@ -97,9 +97,9 @@ export const getHotelsByCity = async ( request, response, next ) => {
 
     try {
         // // Get The Hotel Counts In The Requested Cities From The Database
-        const list = await Promise.all(cities.map(city => (Hotel.countDocuments({ city: city }))));
+        const hotels = await Promise.all(cities.map(city => (Hotel.find({ city: city }))));
         // Send The Hotels As A Response To The Client
-        response.status(200).json(list);
+        response.status(200).json(hotels);
     } catch (error) {
         // Send The Error As A Response To The Client
         next(createError(500, "Get Hotels Failed..."));
@@ -115,9 +115,9 @@ export const getHotelsByType = async ( request, response, next ) => {
 
     try {
         // // Get The Hotel Counts With The Requested Types From The Database
-        const list = await Promise.all(types.map(type => (Hotel.countDocuments({ type: type }))));
+        const hotels = await Promise.all(types.map(type => (Hotel.find({ type: type }))));
         // Send The Hotels As A Response To The Client
-        response.status(200).json(list);
+        response.status(200).json(hotels);
     } catch (error) {
         // Send The Error As A Response To The Client
         next(createError(500, "Get Hotels Failed..."));

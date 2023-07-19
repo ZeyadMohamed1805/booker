@@ -2,24 +2,22 @@
 
 import { useRouter } from "next/navigation";
 import { PropertyItemProps } from "@/utils/types";
-import useApi from "@/utils/useApi";
 
-const PropertyItem = ({ index, content }: PropertyItemProps) => {
+const PropertyItem = ({ count, content }: PropertyItemProps) => {
     const { push } = useRouter();
-    const { data, isLoading } = useApi("hotels_by_types", "/hotels/type?types=hotels,apartments,resorts,villas,cabins");
     
     return (
-        <div onClick={() => push(`/hotels/${content.id}`)} className="rounded-md overflow-hidden cursor-pointer shadow-lg w-[200px] max-[480px]:w-[350px] hover:scale-[1.05] duration-200">
-            <img src={content.image} alt={content.header} className="w-full object-cover" />
+        <div onClick={() => push(`/hotels/${content[0]._id}`)} className="rounded-md overflow-hidden cursor-pointer shadow-lg w-[200px] max-[480px]:w-[350px] hover:scale-[1.05] duration-200">
+            <img src={"https://as1.ftcdn.net/v2/jpg/00/87/67/74/1000_F_87677449_Ia7kriWg3RTu8WKEDzkuNV2KMtfBeV1m.jpg"} alt={content[0].name} className="w-full object-cover" />
             <div className="p-3">
                 <h1 className="text-2xl font-semibold">
                     {
-                        content.header
+                        content[0].name
                     }
                 </h1>
                 <h2 className="text-xl">
                     {
-                        isLoading ? "Loading..." : `${data[index]} hotels`
+                        `${count} hotels`
                     }
                 </h2>
             </div>

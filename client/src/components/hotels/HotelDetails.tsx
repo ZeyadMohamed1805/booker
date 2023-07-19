@@ -22,7 +22,7 @@ const HotelDetails = ({ content }: any) => {
                             <FontAwesomeIcon icon={faCircleArrowLeft} onClick={() => slideNumber > 0 && setSlideNumber(previous => --previous)} className="text-3xl w-10 h-10 text-customBlue" />
                         </div>
                         <div className="w-full h-full flex justify-center items-center">
-                            <img src="/images/features.jpeg" alt="Image" className=" mx-5 max-w-[850px] w-full max-h-4/5" />
+                            <img src="https://as1.ftcdn.net/v2/jpg/01/65/80/44/1000_F_165804442_fX1UXAgrqmHEG76BSwoP2IqJcCmAMXgs.jpg" alt="Image" className=" mx-5 max-w-[850px] w-full max-h-4/5" />
                         </div>
                         <div className="absolute right-0 m-10 text-3xl w-10 h-10 rounded-full cursor-pointer bg-customWhite">
                             <FontAwesomeIcon icon={faCircleArrowRight} onClick={() => slideNumber < 5 && setSlideNumber(previous => ++previous)} className="text-3xl w-10 h-10 text-customBlue" />
@@ -65,7 +65,7 @@ const HotelDetails = ({ content }: any) => {
                     {
                         Array.from(Array(6).keys()).map((image, index) => (
                             <div key={index} className="h-[49%] w-[32%] max-[850px]:w-[49%] max-[850px]:h-[32%] max-[500px]:w-[100%] max-[500px]:h-[16.67%]">
-                                <img onClick={() => {setSlideNumber(index); setOpen(true)}} src="/images/features.jpeg" alt={content.name} className="w-full object-cover cursor-pointer rounded-md hover:scale-[1.05] duration-200" />
+                                <img onClick={() => {setSlideNumber(index); setOpen(true)}} src="https://as1.ftcdn.net/v2/jpg/01/65/80/44/1000_F_165804442_fX1UXAgrqmHEG76BSwoP2IqJcCmAMXgs.jpg" alt={content.name} className="w-full object-cover cursor-pointer rounded-md hover:scale-[1.05] duration-200" />
                             </div>
                         ))
                     }

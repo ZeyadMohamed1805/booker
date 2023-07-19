@@ -8,7 +8,7 @@ const GuestItem = ({ content }: GuestItemProps) => {
     
     return (
         <div onClick={() => push(`/hotels/${content._id}`)} className=" w-[350px] gap-3 flex flex-col rounded-md overflow-hidden shadow-lg cursor-pointer hover:scale-[1.05] duration-200">
-            <img src={"/images/features.jpeg"} alt={content.name} className="w-full" />
+            <img src={"https://as2.ftcdn.net/v2/jpg/01/28/53/25/1000_F_128532563_NJZ4bVL770UPb8KtntICPtQ7vckx1EpF.jpg"} alt={content.name} className="w-full" />
             <div className="flex flex-col gap-3 p-3">
                 <span className="font-semibold text-xl">
                     {
