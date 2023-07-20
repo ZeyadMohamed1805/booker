@@ -1,6 +1,6 @@
 // Modules & Variables
 import express from "express";
-import { createHotel, updateHotel, deleteHotel, getHotel, getHotels, getHotelsByCity, getHotelsByType } from "../controllers/hotels.js";
+import { createHotel, updateHotel, deleteHotel, getHotel, getHotels, getHotelsByCity, getHotelsByType, getSearchedHotels } from "../controllers/hotels.js";
 import { verifyAdmin } from "../middlewares/verify.js";
 const router = express.Router();
 
@@ -17,6 +17,7 @@ router.delete("/:id", verifyAdmin, deleteHotel);
 
 // Get Hotels
 router.get("/", getHotels);
+router.get("/search", getSearchedHotels);
 router.get("/city", getHotelsByCity);
 router.get("/type", getHotelsByType);
 

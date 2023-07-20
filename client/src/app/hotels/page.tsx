@@ -2,7 +2,8 @@ import { FilterItem, Search } from "@/components";
 import client from "@/utils/client";
 
 const Hotels = async ({ params, searchParams }: any) => {
-    const { data } = await client.get(`/hotels?city=${searchParams.city}`);
+    const { data } = await client.get(`/hotels/search?city=${searchParams.city}&sort=${searchParams.sort}&range=${searchParams.range}`);
+    console.log(searchParams);
     
     return (
         <>

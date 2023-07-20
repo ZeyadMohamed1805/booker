@@ -123,3 +123,29 @@ export const getHotelsByType = async ( request, response, next ) => {
         next(createError(500, "Get Hotels Failed..."));
     }
 }
+
+// Get Searched Hotels
+export const getSearchedHotels = async ( request, response, next ) => {
+    // Extract the City, Sort, & Range from the Request Query
+    const { city, sort, range } = request.query;
+    const prices = range.split(",");
+    let sorts = {};
+
+    switch(sort) {
+        case "alphabetically": sorts = { name: 1 }; break;
+        case "highest_price": sorts = { cheapestPrice: -1 }; break;
+        case "lowest_price": sorts = { cheapestPrice: 1 }; break;
+        case "highest_rating": sorts = { rating: -1 }; break;
+        case "lowest_rating": sorts = { rating: 1 }; break;
+    }
+
+    try {
+        // Get The Hotels From The Database
+        const hotels = city ? await Hotel.find({ city: city, cheapestPrice: { $gt: prices[0], $lt: prices[1] } }, null, { sort: sorts }) : await Hotel.find({ cheapestPrice: { $gt: prices[0], $lt: prices[1] } }, null, { sort: sorts });
+        // Send The Hotels As A Response To The Client
+        response.status(200).json(hotels);
+    } catch (error) {
+        // Send The Error As A Response To The Client
+        next(createError(500, "Get Hotels Failed..."));
+    }
+}
