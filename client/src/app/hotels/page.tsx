@@ -1,5 +1,3 @@
-"use client";
-
 import { FilterItem, Search } from "@/components";
 import client from "@/utils/client";
 
