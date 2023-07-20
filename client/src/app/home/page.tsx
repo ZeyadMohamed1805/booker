@@ -24,7 +24,7 @@ const Home = async () => {
                 </div>
                 <div className="w-full max-w-[1400px] flex flex-col gap-10 p-5">
                     <h1 className="text-3xl font-bold">
-                        Recently Visited
+                        Recently Added
                     </h1>
                     <div className="w-full flex flex-wrap justify-between items-center gap-10 max-[680px]:justify-center">
                         {

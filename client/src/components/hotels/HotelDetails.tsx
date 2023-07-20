@@ -40,8 +40,8 @@ const HotelDetails = ({ content }: any) => {
                             }
                         </h1>
                         <div className="flex items-center gap-3">
-                            <FontAwesomeIcon icon={faLocationDot} className="w-4 text-sm text-red-500" />
-                            <span>
+                            <FontAwesomeIcon icon={faLocationDot} className="w-5 text-2xl text-red-500" />
+                            <span className="text-2xl">
                                 {
                                     content.address
                                 }
