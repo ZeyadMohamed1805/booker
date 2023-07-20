@@ -7,10 +7,10 @@ const FilterItem = ({ content }: any) => {
 
     return (
     <div className="border-solid border-customBlue border-4 p-3 rounded-md flex gap-6 max-md:flex-col">
-        <img src={"https://as1.ftcdn.net/v2/jpg/01/15/89/66/1000_F_115896652_50izDX6bu8SNZ1xX8NPwXjQK63vveHVa.jpg"} alt={content.name} className="w-96 object-cover rounded-md max-lg:w-full" />
+        <img src={content.photos[0]} alt={content.name} className="w-96 object-cover rounded-md max-lg:w-full" />
         <div className="w-full flex gap-10 max-lg:flex-col">
             <div className="flex flex-col gap-3 flex-2">
-                <h1 className="text-2xl text-customBlue">
+                <h1 className="text-2xl font-semibold text-customBlue">
                     {
                         content.name
                     }

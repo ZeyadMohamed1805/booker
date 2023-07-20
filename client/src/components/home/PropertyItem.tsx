@@ -7,17 +7,17 @@ const PropertyItem = ({ count, content }: PropertyItemProps) => {
     const { push } = useRouter();
     
     return (
-        <div onClick={() => push(`/hotels/${content[0]._id}`)} className="rounded-md overflow-hidden cursor-pointer shadow-lg w-[200px] max-[480px]:w-[350px] hover:scale-[1.05] duration-200">
-            <img src={"https://as1.ftcdn.net/v2/jpg/00/87/67/74/1000_F_87677449_Ia7kriWg3RTu8WKEDzkuNV2KMtfBeV1m.jpg"} alt={content[0].name} className="w-full object-cover" />
+        <div onClick={() => push(`/hotels/${content._id}`)} className="rounded-md overflow-hidden cursor-pointer shadow-lg max-[680px]:w-full w-[300px] hover:scale-[1.05] duration-200">
+            <img src={content.photos[0]} alt={content.name} className="w-full object-cover aspect-[3/2]" />
             <div className="p-3">
                 <h1 className="text-2xl font-semibold">
                     {
-                        content[0].name
+                        content.name
                     }
                 </h1>
                 <h2 className="text-xl">
                     {
-                        `${count} hotels`
+                        content.city
                     }
                 </h2>
             </div>
