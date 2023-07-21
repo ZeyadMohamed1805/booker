@@ -1,13 +1,15 @@
+// Auth Components
+import LoginForm from "./auth/LoginForm";
+import RegisterForm from "./auth/RegisterForm";
+
 // Common Components
 import Mail from "./common/Mail";
 import Search from "./common/Search";
 
-// Layouts
+// Layouts Components
 import Layout from "./layouts/Layout";
 import AuthLayout from "./layouts/auth/AuthLayout";
 import MainLayout from "./layouts/main/mainLayout";
-
-// Layouts Components
 import Navbar from "./layouts/Navbar";
 import Sidebar from "./layouts/Sidebar";
 import Footer from "./layouts/Footer";
@@ -24,4 +26,4 @@ import GuestItem from "./home/GuestItem";
 // Hotels Components
 import FilterItem from "./hotels/FilterItem";
 
-export { Layout, MainLayout, AuthLayout, Navbar, Sidebar, Header, Intro, ListItem, Option, Footer, FeatureItem, PropertyItem, GuestItem, Mail, FilterItem, Search };
+export { LoginForm, RegisterForm, Layout, MainLayout, AuthLayout, Navbar, Sidebar, Header, Intro, ListItem, Option, Footer, FeatureItem, PropertyItem, GuestItem, Mail, FilterItem, Search };
