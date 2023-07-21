@@ -47,12 +47,12 @@ const HotelDetails = ({ content }: any) => {
                                 }
                             </span>
                         </div>
-                        <span className="text-customBlue font-semibold">
+                        <span className="text-lg text-customBlue font-semibold">
                             {
                                 `Excellent location - ${content.distance}m from center`
                             }
                         </span>
-                        <span className="font-semibold">
+                        <span className="text-lg font-semibold">
                             {
                                 `Book a stay over $${content.cheapestPrice} at this property and get a free airport taxi!`
                             }

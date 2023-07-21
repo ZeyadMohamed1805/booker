@@ -23,7 +23,7 @@ const FilterItem = ({ content }: any) => {
                 <span className="bg-green-400 font-semibold text-customWhite w-fit p-3 rounded-md">
                     Free Airport Taxi
                 </span>
-                <span className="font-bold">
+                <span className="text-xl font-bold">
                     {
                         content.title
                     }
@@ -33,7 +33,7 @@ const FilterItem = ({ content }: any) => {
                         content.description
                     }
                 </span>
-                <span className="font-bold">
+                <span className="text-xl font-bold">
                     Free Cancellation
                 </span>
                 <span>
