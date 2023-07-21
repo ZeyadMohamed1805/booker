@@ -8,7 +8,6 @@ import { useState } from "react";
 const HotelDetails = ({ content }: any) => {
     const [ slideNumber, setSlideNumber ] = useState(0);
     const [ open, setOpen ] = useState(false);
-    console.log(content)
 
     return (
         <>

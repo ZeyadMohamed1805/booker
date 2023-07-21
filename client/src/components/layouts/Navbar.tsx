@@ -14,12 +14,12 @@ const Navbar = () => {
                 <img src="/images/navbar-logo.png" alt="Booker" className="w-48" />
                 <ul className="flex gap-5 text-primary text-xl duration-200 font-semibold max-[500px]:hidden">
                     <li className="cursor-pointer p-2 rounded-md uppercase bg-customWhite hover:bg-opacity-50 duration-200">
-                        <a href="/register">
+                        <a href="/signup">
                             Sign Up
                         </a>
                     </li>
                     <li className="cursor-pointer p-2 rounded-md uppercase bg-customWhite hover:bg-opacity-50 duration-200">
-                        <a href="/login">
+                        <a href="/signin">
                             Sign In
                         </a>
                     </li>

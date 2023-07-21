@@ -2,6 +2,11 @@
 import Mail from "./common/Mail";
 import Search from "./common/Search";
 
+// Layouts
+import Layout from "./layouts/Layout";
+import AuthLayout from "./layouts/auth/AuthLayout";
+import MainLayout from "./layouts/main/mainLayout";
+
 // Layouts Components
 import Navbar from "./layouts/Navbar";
 import Sidebar from "./layouts/Sidebar";
@@ -19,4 +24,4 @@ import GuestItem from "./home/GuestItem";
 // Hotels Components
 import FilterItem from "./hotels/FilterItem";
 
-export { Navbar, Sidebar, Header, Intro, ListItem, Option, Footer, FeatureItem, PropertyItem, GuestItem, Mail, FilterItem, Search };
+export { Layout, MainLayout, AuthLayout, Navbar, Sidebar, Header, Intro, ListItem, Option, Footer, FeatureItem, PropertyItem, GuestItem, Mail, FilterItem, Search };
