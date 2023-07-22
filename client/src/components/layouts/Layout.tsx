@@ -13,7 +13,9 @@ const Layout = ({ children }: ChildrenType) => {
             {
                 pathname.includes("sign") ?
                <AuthLayout children={children} /> :
-               <MainLayout children={children} />
+               pathname !== "/success" ?
+               <MainLayout children={children} /> :
+               children
             }
         </>
     )
