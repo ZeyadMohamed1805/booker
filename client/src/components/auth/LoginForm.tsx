@@ -1,15 +1,24 @@
 "use client";
 
+import client from "@/utils/client";
 import { useRouter } from "next/navigation";
+import { useForm } from "react-hook-form";
 
 const LoginForm = () => {
+    const { handleSubmit, register, formState: { errors } } = useForm();
     const { push } = useRouter();
-    
+
+    const onSubmit = async ({ username, password }: any) => {
+        const { data } = await client.post("/auth/login", { username: username, password: password });
+        localStorage.setItem("booker_user", JSON.stringify(data));
+        push("/home");
+    }
+
     return (
-        <form className="w-full flex flex-col justify-between gap-16">
+        <form onSubmit={handleSubmit(onSubmit)} className="w-full flex flex-col justify-between gap-16">
             <div className="w-full flex flex-col gap-3">
-                <input type="text" placeholder="Username" className="w-full p-3 rounded-md border-solid border-gray-400 border-2 text-gray-400" />
-                <input type="password" placeholder="Password" className="w-full p-3 rounded-md border-solid border-gray-400 border-2 text-gray-400" />
+                <input {...register("username", { required: "Username is required." })} type="text" placeholder="Username" className="w-full p-3 rounded-md border-solid border-gray-400 border-2 text-gray-400" />
+                <input {...register("password", { required: "Password is required." })} type="password" placeholder="Password" className="w-full p-3 rounded-md border-solid border-gray-400 border-2 text-gray-400" />
                 <button type="submit" className="w-full bg-primary p-3 text-customWhite font-bold hover:bg-opacity-50 cursor-pointer rounded-md duration-200">
                     Submit
                 </button>
