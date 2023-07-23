@@ -1,9 +1,9 @@
 "use client";
 
 import Sidebar from "./Sidebar";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faSortDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import useUser from "@/utils/useUser";
 
 const Navbar = () => {
@@ -12,19 +12,22 @@ const Navbar = () => {
 
     return (
         <nav className="bg-primary flex justify-center p-5">
-            <div className="w-full text-customWhite flex items-center justify-between max-w-[1400px]">
+            <div className="w-full text-customWhite flex items-center justify-between max-w-[1400px] relative">
                 <img src="/images/navbar-logo.png" alt="Booker" className="w-48" />
                 {
                     loading ?
                     <h1 className="text-xl font-semibold max-[500px]:hidden">
                         Loading...
-                    </h1> :
+                    </h1>:
                     user.username ?
-                    <h1 className="text-xl font-semibold max-[500px]:hidden">
-                        {
-                            user.username
-                        }
-                    </h1> :
+                    <div onClick={() => setOpen(previous => !previous)} className="flex gap-3 cursor-pointer max-[500px]:hidden">
+                        <h1 className="text-xl font-semibold">
+                            {
+                                user.username
+                            }
+                        </h1>
+                        <FontAwesomeIcon icon={faSortDown} className="w-6 text-xl" />
+                    </div> :
                     <ul className="flex gap-5 text-primary text-xl duration-200 font-semibold max-[500px]:hidden">
                         <li className="cursor-pointer p-2 rounded-md uppercase bg-customWhite hover:bg-opacity-50 duration-200">
                             <a href="/signup">
