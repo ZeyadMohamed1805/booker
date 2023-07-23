@@ -11,6 +11,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import useUser from "@/utils/useUser";
 import { useForm } from "react-hook-form";
+import { Suggested } from "@/components";
 
 const HotelDetails = ({ content }: any) => {
     const [ slideNumber, setSlideNumber ] = useState(0);
@@ -142,6 +143,7 @@ const HotelDetails = ({ content }: any) => {
                         </button>
                     </form>
                 </div>
+                <Suggested city={content.city} />
                 <Mail />
             </div>
         </>

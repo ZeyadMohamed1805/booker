@@ -16,23 +16,23 @@ const DealsItem = ({ content }: DealsItemProps) => {
                             content.name
                         }
                     </span>
-                    <span className="font-[500]">
+                    <span className="text-xl font-semibold">
                         {
                             content.city
                         }
                     </span>
                 </div>
-                <div className="flex items-center justify-between gap-2 w-full border-t-2 border-t-solid border-t-gray-300 pt-3">
-                    <span>
+                <div className="flex items-center justify-between gap-6 w-full border-t-2 border-t-solid border-t-gray-300 pt-3">
+                    <span className="text-lg">
                         {
                             `Starting from $${content.cheapestPrice}`
                         }
                     </span>
-                    <div className="flex items-center gap-2">
-                        <span>
+                    <div className="flex items-center gap-3">
+                        <span className="text-lg">
                             Excellent
                         </span>
-                        <label className="bg-customGold text-customWhite rounded-md p-2">
+                        <label className="bg-customGold text-customWhite rounded-md p-2 font-bold">
                             {
                                 content.rating
                             }

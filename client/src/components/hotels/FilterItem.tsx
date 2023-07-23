@@ -1,5 +1,6 @@
 "use client";
 
+import { format } from "date-fns"
 import { useRouter } from "next/navigation";
 
 const FilterItem = ({ content }: any) => {
@@ -17,7 +18,7 @@ const FilterItem = ({ content }: any) => {
                 </h1>
                 <span>
                     {
-                        `${content.distance}m from center`
+                        `Booker partner since ${format(new Date(content.createdAt), "MM/dd/yyyy")}`
                     }
                 </span>
                 <span className="bg-green-400 font-semibold text-customWhite w-fit p-3 rounded-md">
@@ -25,7 +26,7 @@ const FilterItem = ({ content }: any) => {
                 </span>
                 <span className="text-xl font-bold">
                     {
-                        content.title
+                        content.city
                     }
                 </span>
                 <span>

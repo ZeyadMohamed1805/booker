@@ -15,11 +15,16 @@ const RecentItem = ({ content }: RecentItemProps) => {
                         content.name
                     }
                 </h1>
-                <h2 className="text-xl">
-                    {
-                        content.city
-                    }
-                </h2>
+                <div className="w-full flex items-center justify-between gap-3">
+                    <h2 className="text-xl">
+                        {
+                            content.city
+                        }
+                    </h2>
+                    <label className="py-1 px-2 text-center font-semibold text-orange-400 bg-orange-100 rounded-md border-solid border-2 border-orange-400">
+                        New
+                    </label>
+                </div>
             </div>
         </div>
     )

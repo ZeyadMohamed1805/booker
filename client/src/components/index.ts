@@ -25,5 +25,6 @@ import DealsItem from "./home/DealsItem";
 
 // Hotels Components
 import FilterItem from "./hotels/FilterItem";
+import Suggested from "./hotels/Suggested";
 
-export { LoginForm, RegisterForm, Layout, MainLayout, AuthLayout, Navbar, Sidebar, Header, Intro, ListItem, Option, Footer, PopularItem, RecentItem, DealsItem, Mail, FilterItem, Search };
+export { LoginForm, RegisterForm, Layout, MainLayout, AuthLayout, Navbar, Sidebar, Header, Intro, ListItem, Option, Footer, PopularItem, RecentItem, DealsItem, Mail, FilterItem, Suggested, Search };

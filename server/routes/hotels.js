@@ -1,6 +1,6 @@
 // Modules & Variables
 import express from "express";
-import { createHotel, updateHotel, deleteHotel, getHotel, getHotels, getHotelsByCity, getHotelsByType, getSearchedHotels, getHotelsByPopularity, getHotelsByDate, getHotelsByBestDeals } from "../controllers/hotels.js";
+import { createHotel, updateHotel, deleteHotel, getHotel, getHotels, getHotelsByCity, getHotelsByType, getSearchedHotels, getHotelsByPopularity, getHotelsByDate, getHotelsByBestDeals, getCities } from "../controllers/hotels.js";
 import { verifyAdmin } from "../middlewares/verify.js";
 const router = express.Router();
 
@@ -23,6 +23,7 @@ router.get("/type", getHotelsByType);
 router.get("/popular", getHotelsByPopularity);
 router.get("/recent", getHotelsByDate);
 router.get("/deals", getHotelsByBestDeals);
+router.get("/cities", getCities);
 
 // Get Hotel
 router.get("/:id", getHotel);

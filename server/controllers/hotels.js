@@ -56,6 +56,21 @@ export const deleteHotel = async ( request, response, next ) => {
 
 // ###################################
 
+// Get Cities
+export const getCities = async ( request, response, next ) => {
+    try {
+        // Get The Hotel From The Database
+        const cities = [ ... new Set((await Hotel.find({  })).map(hotel => hotel.city)) ];
+        // Send The Requested Hotel As A Response To The Client
+        response.status(200).json(cities);
+    } catch (error) {
+        // Send The Error As A Response To The Client
+        next(createError(500, "Get Hotel Failed..."));
+    }
+}
+
+// ###################################
+
 // Get Hotel
 export const getHotel = async ( request, response, next ) => {
     // Destruct The ID From The Request
@@ -145,7 +160,7 @@ export const getHotelsByPopularity = async ( request, response, next ) => {
 export const getHotelsByDate = async ( request, response, next ) => {
     try {
         // // Get The Most Recent Hotels
-        const hotels = await Hotel.find({ }, null, { sort: { createdAt: 1 } }).limit(4);
+        const hotels = await Hotel.find({ }, null, { sort: { createdAt: -1 } }).limit(4);
         // Send The Hotels As A Response To The Client
         response.status(200).json(hotels);
     } catch (error) {
@@ -184,8 +199,8 @@ export const getSearchedHotels = async ( request, response, next ) => {
         case "lowest_price": sorts = { cheapestPrice: 1 }; break;
         case "highest_rating": sorts = { rating: -1 }; break;
         case "lowest_rating": sorts = { rating: 1 }; break;
-        case "newest": sorts = { createdAt: 1 }; break;
-        case "oldest": sorts = { createdAt: -1 }; break;
+        case "newest": sorts = { createdAt: -1 }; break;
+        case "oldest": sorts = { createdAt: 1 }; break;
     }
 
     try {
