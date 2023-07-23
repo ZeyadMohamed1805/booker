@@ -17,14 +17,19 @@ const HotelDetails = ({ content }: any) => {
     const [ slideNumber, setSlideNumber ] = useState(0);
     const [ open, setOpen ] = useState(false);
     const [ openDate, setOpenDate ] = useState(false);
+    const [ errors, setErrors ] = useState("");
     const [ date, setDate ] = useState<any>([{ startDate: new Date(), endDate: new Date(), key: "selection" }]);
     const days = Math.ceil(Math.abs(Number(new Date(date[0].startDate)) - Number(new Date(date[0].endDate))) / (1000 * 60 * 60 * 24));
     const { push } = useRouter();
     const { user } = useUser();
-    const { handleSubmit } = useForm();
-
+    const { handleSubmit, register } = useForm();
+    
     const onSubmit = (values: any) => {
-        user.username ? push("/success") : push("/signin");
+        console.log(values);
+        !Boolean(days) ?
+        setErrors("Rservation Must Be Atleast One Day") :
+        user.username ? push("/success") : push("/signin")
+
     }
 
     return (
@@ -75,9 +80,9 @@ const HotelDetails = ({ content }: any) => {
                             }
                         </span>
                     </div>
-                    <button type="submit" className="bg-customBlue text-customWhite font-bold border-none p-3 rounded-md cursor-pointer h-fit hover:bg-opacity-50 duration-200">
+                    <a href="/hotels?city=&sort=alphabetically&range=0,999999999" className="bg-customBlue text-customWhite font-bold border-none p-3 rounded-md cursor-pointer h-fit hover:bg-opacity-50 duration-200">
                         Browse More Hotels!
-                    </button>
+                    </a>
                 </div>
                 <div className="min-h-fit max-w-[1400px] flex flex-wrap justify-between gap-x-[1.5%] gap-y-[5%] max-[850px]:gap-y-[3%] max-[500px]:gap-y-[1.5%] max-[500px]:mb-28 rounded-md p-5">
                     {
@@ -91,9 +96,7 @@ const HotelDetails = ({ content }: any) => {
                 <div className="max-w-[1400px] w-full flex max-[850px]:flex-col p-5 justify-between gap-6">
                     <div className="w-4/5 max-[850px]:w-full flex flex-col gap-3">
                         <h1 className="text-3xl font-bold">
-                            {
-                                content.title
-                            }
+                            Description
                         </h1>
                         <p className="leading-6">
                             {
@@ -102,8 +105,8 @@ const HotelDetails = ({ content }: any) => {
                         </p>
                     </div>
                     <form onSubmit={handleSubmit(onSubmit)} className="w-4/12 bg-blue-100 p-3 flex flex-col justify-between gap-3 rounded-md max-[850px]:w-full">
-                        <div className="w-full flex items-center gap-5 relative">
-                            <span suppressHydrationWarning className="w-full bg-customWhite text-gray-400 cursor-pointer border-solid border-2 outline-none border-gray-400 p-2 rounded-md" onClick={() => setOpenDate(previous => !previous)}>
+                        <div className="w-full flex flex-col justify-center gap-3 relative">
+                            <span {...register("days", { value: date})} suppressHydrationWarning className="w-full bg-customWhite text-gray-400 cursor-pointer border-solid border-2 outline-none border-gray-400 p-2 rounded-md" onClick={() => setOpenDate(previous => !previous)}>
                                 {`${format(date[0].startDate, "MM/dd/yyyy")} to ${format(date[0].endDate, "MM/dd/yyyy")}`}
                             </span>
                             {
@@ -117,12 +120,17 @@ const HotelDetails = ({ content }: any) => {
                                     minDate={new Date()}
                                 />
                             }
+                            <span className="text-red-500 font-semibold">
+                                {
+                                    days <= 0 && errors
+                                }
+                            </span>
                         </div>
-                        <select name="food" className="w-full bg-customWhite text-gray-400 cursor-pointer border-solid border-2 outline-none border-gray-400 p-2 rounded-md">
+                        <select {...register("food")} defaultValue={"Full Board"} name="food" className="w-full bg-customWhite text-gray-400 cursor-pointer border-solid border-2 outline-none border-gray-400 p-2 rounded-md">
                             <option value="Full Board">
                                 Full Board
                             </option>
-                            <option value="Full Board">
+                            <option value="Half Board">
                                 Half Board
                             </option>
                         </select>
@@ -138,12 +146,12 @@ const HotelDetails = ({ content }: any) => {
                                 }
                             </span>
                         </h2>
-                        <button onClick={() => {}} className="bg-customBlue text-customWhite font-bold border-none p-3 rounded-md cursor-pointer h-fit hover:bg-opacity-50 duration-200">
+                        <button type="submit" className="bg-customBlue text-customWhite font-bold border-none p-3 rounded-md cursor-pointer h-fit hover:bg-opacity-50 duration-200">
                             Reserve or Book Now!
                         </button>
                     </form>
                 </div>
-                <Suggested city={content.city} />
+                <Suggested name={content.name} city={content.city} />
                 <Mail />
             </div>
         </>

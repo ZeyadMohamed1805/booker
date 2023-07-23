@@ -3,7 +3,7 @@
 import PopularItem from "../home/PopularItem";
 import useApi from "@/utils/useApi";
 
-const Suggested = ({ city }: any) => {
+const Suggested = ({ name, city }: any) => {
     const { data, isLoading } = useApi("suggested_hotels", `/hotels/city?cities=${city}`);
     
     return (
@@ -18,7 +18,7 @@ const Suggested = ({ city }: any) => {
                         <h1 className="text-xl font-bold">
                             Loading...
                         </h1> :
-                        data[0].map((hotel: any) => (
+                        data[0].filter((hotel: any) => hotel.name !== name).map((hotel: any) => (
                             <PopularItem key={hotel._id} content={hotel} />
                         ))
                     }
