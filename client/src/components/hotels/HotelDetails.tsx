@@ -37,7 +37,7 @@ const HotelDetails = ({ content }: any) => {
                 board: values.food,
                 price: Number(content.cheapestPrice) * days
             }
-        }).then((response) => {console.log(response); push("/success")}) :
+        }).then((response) => {console.log(response); localStorage.setItem("booker_user", JSON.stringify(response.data)); push("/success")}) :
         push("/signin")
 
     }
