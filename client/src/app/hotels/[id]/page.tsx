@@ -4,6 +4,7 @@ import client from "@/utils/client";
 
 const Hotel = async ( { params: { id } }: HotelPageProps ) => {
     const { data } = await client.get(`/hotels/${id}`);
+
     return (
         <div className="flex justify-center">
             <HotelDetails content={data} />

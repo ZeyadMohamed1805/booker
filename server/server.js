@@ -24,7 +24,7 @@ dotenv.config();
 // ################################################
 
 // Middlewares
-server.use(cors());
+server.use(cors({ origin: "http://localhost:3000", credentials: true }));
 server.use(cookieParser());
 server.use(express.json());
 server.use(express.urlencoded({ extended: false }));

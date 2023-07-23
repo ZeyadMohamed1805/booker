@@ -1,6 +1,6 @@
 // Modules & Variables
 import express from "express";
-import { deleteUser, updateUser, getUser, getUsers } from "../controllers/users.js";
+import { deleteUser, updateUser, getUser, getUsers, updateReservation } from "../controllers/users.js";
 import { verifyToken, verifyUser, verifyAdmin } from "../middlewares/verify.js";
 const router = express.Router();
 
@@ -29,6 +29,10 @@ router.get("/:id", verifyUser, getUser);
 
 // Update User
 router.put("/:id", verifyUser, updateUser);
+
+// Update User
+router.put("/:id", verifyUser, updateUser)
+router.put("/book/:id", verifyUser, updateReservation);
 
 // Delete User
 router.delete("/:id", verifyUser, deleteUser);

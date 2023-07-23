@@ -6,12 +6,13 @@ import { format } from "date-fns";
 import { DateRange } from "react-date-range";
 import { faCircleArrowLeft, faCircleArrowRight, faCircleXmark, faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Mail } from "@/components";
+import { Browse } from "@/components";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import useUser from "@/utils/useUser";
 import { useForm } from "react-hook-form";
 import { Suggested } from "@/components";
+import client from "@/utils/client";
 
 const HotelDetails = ({ content }: any) => {
     const [ slideNumber, setSlideNumber ] = useState(0);
@@ -25,10 +26,19 @@ const HotelDetails = ({ content }: any) => {
     const { handleSubmit, register } = useForm();
     
     const onSubmit = (values: any) => {
-        console.log(values);
         !Boolean(days) ?
         setErrors("Rservation Must Be Atleast One Day") :
-        user.username ? push("/success") : push("/signin")
+        user.username ? 
+        client.put(`/users/book/${user._id}`, {
+            reservations: {
+                hotelName: content.name,
+                startDate: values.days[0].startDate,
+                endDate: values.days[0].endDate,
+                board: values.food,
+                price: Number(content.cheapestPrice) * days
+            }
+        }).then((response) => {console.log(response); push("/success")}) :
+        push("/signin")
 
     }
 
@@ -80,7 +90,7 @@ const HotelDetails = ({ content }: any) => {
                             }
                         </span>
                     </div>
-                    <a href="/hotels?city=&sort=alphabetically&range=0,999999999" className="bg-customBlue text-customWhite font-bold border-none p-3 rounded-md cursor-pointer h-fit hover:bg-opacity-50 duration-200">
+                    <a href="/hotels?city=&sort=alphabetically&range=0,999999999" className="text-center bg-customBlue text-customWhite font-bold border-none p-3 rounded-md cursor-pointer h-fit hover:bg-opacity-50 duration-200">
                         Browse More Hotels!
                     </a>
                 </div>
@@ -152,7 +162,7 @@ const HotelDetails = ({ content }: any) => {
                     </form>
                 </div>
                 <Suggested name={content.name} city={content.city} />
-                <Mail />
+                <Browse />
             </div>
         </>
     )

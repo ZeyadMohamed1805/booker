@@ -1,4 +1,4 @@
-import { Intro, PopularItem, RecentItem, DealsItem, Mail } from "@/components";
+import { Intro, PopularItem, RecentItem, DealsItem, Browse } from "@/components";
 import client from "@/utils/client";
 
 const Home = async () => {
@@ -46,7 +46,7 @@ const Home = async () => {
                         }
                     </div>
                 </div>
-                <Mail />
+                <Browse />
             </div>
         </>
     )

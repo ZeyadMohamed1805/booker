@@ -3,7 +3,7 @@ import LoginForm from "./auth/LoginForm";
 import RegisterForm from "./auth/RegisterForm";
 
 // Common Components
-import Mail from "./common/Mail";
+import Browse from "./common/Browse";
 import Search from "./common/Search";
 
 // Layouts Components
@@ -27,4 +27,4 @@ import DealsItem from "./home/DealsItem";
 import FilterItem from "./hotels/FilterItem";
 import Suggested from "./hotels/Suggested";
 
-export { LoginForm, RegisterForm, Layout, MainLayout, AuthLayout, Navbar, Sidebar, Header, Intro, ListItem, Option, Footer, PopularItem, RecentItem, DealsItem, Mail, FilterItem, Suggested, Search };
+export { LoginForm, RegisterForm, Layout, MainLayout, AuthLayout, Navbar, Sidebar, Header, Intro, ListItem, Option, Footer, PopularItem, RecentItem, DealsItem, Browse, FilterItem, Suggested, Search };

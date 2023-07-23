@@ -20,6 +20,24 @@ export const updateUser = async ( request, response, next ) => {
 
 // ###################################
 
+// Update Reservation
+export const updateReservation = async ( request, response, next ) => {
+    // Destruct The ID From The Request
+    const { body, params: { id } } = request;
+
+    try {
+        // Add Reservation To The User To The Database
+        const updatedUser = await User.findByIdAndUpdate( id, { $push: body }, { new: true });
+        // Send The Updated User As A Response To The Client
+        response.status(200).json(updatedUser);
+    } catch (error) {
+        // Send The Error As A Response To The Client
+        next(createError(500, "Post User Reservation Failed..."));
+    }
+}
+
+// ###################################
+
 // Delete User
 export const deleteUser = async ( request, response, next ) => {
     // Destruct The ID From The Request
