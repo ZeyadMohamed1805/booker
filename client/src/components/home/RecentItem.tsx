@@ -1,9 +1,9 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { PropertyItemProps } from "@/utils/types";
+import { RecentItemProps } from "@/utils/types";
 
-const PropertyItem = ({ count, content }: PropertyItemProps) => {
+const RecentItem = ({ content }: RecentItemProps) => {
     const { push } = useRouter();
     
     return (
@@ -25,4 +25,4 @@ const PropertyItem = ({ count, content }: PropertyItemProps) => {
     )
 }
 
-export default PropertyItem
+export default RecentItem;

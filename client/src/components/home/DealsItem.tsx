@@ -1,9 +1,9 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { GuestItemProps } from "@/utils/types";
+import { DealsItemProps } from "@/utils/types";
 
-const GuestItem = ({ content }: GuestItemProps) => {
+const DealsItem = ({ content }: DealsItemProps) => {
     const { push } = useRouter();
     
     return (
@@ -44,4 +44,4 @@ const GuestItem = ({ content }: GuestItemProps) => {
     )
 }
 
-export default GuestItem
+export default DealsItem

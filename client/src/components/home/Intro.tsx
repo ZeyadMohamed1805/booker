@@ -15,9 +15,9 @@ const Intro = () => {
                         Get rewarded for your travels - 
                         Unlock instant savings of 10% or more with a Free Booker Account!
                     </p>
-                    <button className="w-fit bg-customBlue text-white font-bold p-3 cursor-pointer rounded-md hover:bg-opacity-50 duration-200">
-                        Sign In / Sign Up
-                    </button>
+                    <a href="/hotels?city=&sort=alphabetically&range=0,999999999" className="w-fit bg-customBlue text-white font-bold p-3 cursor-pointer rounded-md hover:bg-opacity-50 duration-200">
+                        Browse Hotels
+                    </a>
                 </div>
                 {/* Header Search */}
                 <Search page="home" />

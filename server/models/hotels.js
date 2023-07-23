@@ -14,8 +14,9 @@ const HotelSchema = new Schema({
     description: { type: String, required: true },
     rating: { type: Number, min: 0, max: 5 },
     rooms: { type: [String] },
+    books: { type: Number, default: 0 },
     cheapestPrice: { type: Number, required: true },
     featured: { type: Boolean, default: false }
-});
+}, { timestamps: true });
 
 export default mongoose.model("Hotel", HotelSchema);

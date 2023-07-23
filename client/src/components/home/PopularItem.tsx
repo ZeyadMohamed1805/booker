@@ -1,9 +1,9 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { FeatureItemProps } from "@/utils/types";
+import { PopularItemProps } from "@/utils/types";
 
-const FeatureItem = ({ count, content }: FeatureItemProps) => {
+const PopularItem = ({ content }: PopularItemProps) => {
     const { push } = useRouter();
     
     return (
@@ -28,4 +28,4 @@ const FeatureItem = ({ count, content }: FeatureItemProps) => {
 }
 
 
-export default FeatureItem;
+export default PopularItem;

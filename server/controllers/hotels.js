@@ -124,6 +124,53 @@ export const getHotelsByType = async ( request, response, next ) => {
     }
 }
 
+// ###################################
+
+// Get Hotels By Popularity
+export const getHotelsByPopularity = async ( request, response, next ) => {
+    try {
+        // // Get The Popular Hotels
+        const hotels = await Hotel.find({ }, null, { sort: { books: -1 } }).limit(3);
+        // Send The Hotels As A Response To The Client
+        response.status(200).json(hotels);
+    } catch (error) {
+        // Send The Error As A Response To The Client
+        next(createError(500, "Get Hotels Failed..."));
+    }
+}
+
+// ###################################
+
+// Get Hotels By Most Recent
+export const getHotelsByDate = async ( request, response, next ) => {
+    try {
+        // // Get The Most Recent Hotels
+        const hotels = await Hotel.find({ }, null, { sort: { createdAt: 1 } }).limit(4);
+        // Send The Hotels As A Response To The Client
+        response.status(200).json(hotels);
+    } catch (error) {
+        // Send The Error As A Response To The Client
+        next(createError(500, "Get Hotels Failed..."));
+    }
+}
+
+// ###################################
+
+// Get Hotels By Best Deals
+export const getHotelsByBestDeals = async ( request, response, next ) => {
+    try {
+        // // Get The Hotels With Best Deals
+        const hotels = await Hotel.find({ }, null, { sort: { cheapestPrice: 1, rating: -1 } }).limit(3);
+        // Send The Hotels As A Response To The Client
+        response.status(200).json(hotels);
+    } catch (error) {
+        // Send The Error As A Response To The Client
+        next(createError(500, "Get Hotels Failed..."));
+    }
+}
+
+// ###################################
+
 // Get Searched Hotels
 export const getSearchedHotels = async ( request, response, next ) => {
     // Extract the City, Sort, & Range from the Request Query
@@ -137,6 +184,8 @@ export const getSearchedHotels = async ( request, response, next ) => {
         case "lowest_price": sorts = { cheapestPrice: 1 }; break;
         case "highest_rating": sorts = { rating: -1 }; break;
         case "lowest_rating": sorts = { rating: 1 }; break;
+        case "newest": sorts = { createdAt: 1 }; break;
+        case "oldest": sorts = { createdAt: -1 }; break;
     }
 
     try {

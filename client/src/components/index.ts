@@ -19,11 +19,11 @@ import Option from "./layouts/Option";
 
 // Home Components
 import Intro from "./home/Intro";
-import FeatureItem from "./home/FeatureItem";
-import PropertyItem from "./home/PropertyItem";
-import GuestItem from "./home/GuestItem";
+import PopularItem from "./home/PopularItem";
+import RecentItem from "./home/RecentItem";
+import DealsItem from "./home/DealsItem";
 
 // Hotels Components
 import FilterItem from "./hotels/FilterItem";
 
-export { LoginForm, RegisterForm, Layout, MainLayout, AuthLayout, Navbar, Sidebar, Header, Intro, ListItem, Option, Footer, FeatureItem, PropertyItem, GuestItem, Mail, FilterItem, Search };
+export { LoginForm, RegisterForm, Layout, MainLayout, AuthLayout, Navbar, Sidebar, Header, Intro, ListItem, Option, Footer, PopularItem, RecentItem, DealsItem, Mail, FilterItem, Search };

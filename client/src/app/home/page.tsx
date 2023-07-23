@@ -1,10 +1,10 @@
-import { Intro, FeatureItem, PropertyItem, GuestItem, Mail } from "@/components";
+import { Intro, PopularItem, RecentItem, DealsItem, Mail } from "@/components";
 import client from "@/utils/client";
 
 const Home = async () => {
-    const { data: featureItems } = await client.get("/hotels?limit=3");
-    const { data: propertyItems } = await client.get("/hotels?limit=4");
-    const { data: guestItems } = await client.get("/hotels?limit=3");
+    const { data: popularItems } = await client.get("/hotels/popular");
+    const { data: recentItems } = await client.get("/hotels/recent");
+    const { data: dealItems } = await client.get("/hotels/deals");
 
     return (
         <>
@@ -16,8 +16,8 @@ const Home = async () => {
                     </h1>
                     <div className="w-full flex flex-wrap justify-between gap-10 max-[880px]:justify-center">
                         {
-                            featureItems.map((feature: any, index: number) => (
-                                <FeatureItem key={index} count={featureItems.length} content={feature} />
+                            popularItems.map((feature: any, index: number) => (
+                                <PopularItem key={index} content={feature} />
                             ))
                         }
                     </div>
@@ -28,8 +28,8 @@ const Home = async () => {
                     </h1>
                     <div className="w-full flex flex-wrap justify-between items-center gap-10 max-[680px]:justify-center">
                         {
-                            propertyItems.map((item: any, index: number) => (
-                                <PropertyItem key={index} count={propertyItems.length} content={item} />
+                            recentItems.map((item: any, index: number) => (
+                                <RecentItem key={index} content={item} />
                             ))
                         }
                     </div>
@@ -40,8 +40,8 @@ const Home = async () => {
                     </h1>
                     <div className="w-full flex flex-wrap justify-between gap-10 max-[880px]:justify-center">
                         {
-                            guestItems.map((item: any, index: number) => (
-                                <GuestItem key={index} content={item} />
+                            dealItems.map((item: any, index: number) => (
+                                <DealsItem key={index} content={item} />
                             ))
                         }
                     </div>

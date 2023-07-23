@@ -21,8 +21,7 @@ export type OptionProps = {
     setOption: (name: string, opertion: string) => void
 }
 
-export type FeatureItemProps = {
-    count: number,
+export type PopularItemProps = {
     content: {
         _id: string,
         name: string,
@@ -33,7 +32,7 @@ export type FeatureItemProps = {
     }
 }
 
-export type GuestItemProps = {
+export type DealsItemProps = {
     content: {
         _id: string
         name: string,
@@ -45,7 +44,7 @@ export type GuestItemProps = {
     }
 }
 
-export type PropertyItemProps = FeatureItemProps;
+export type RecentItemProps = PopularItemProps;
 
 // Hooks Types
 
