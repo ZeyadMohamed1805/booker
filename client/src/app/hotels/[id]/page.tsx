@@ -1,9 +1,9 @@
-import { HotelPageProps } from "@/utils/types";
+import { HotelApiType, HotelPageProps } from "@/utils/types";
 import HotelDetails from "@/components/hotels/HotelDetails";
 import client from "@/utils/client";
 
 const Hotel = async ( { params: { id } }: HotelPageProps ) => {
-    const { data } = await client.get(`/hotels/${id}`);
+    const { data }: HotelApiType = await client.get(`/hotels/${id}`);
 
     return (
         <div className="flex justify-center">

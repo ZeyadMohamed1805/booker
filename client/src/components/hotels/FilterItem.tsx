@@ -1,9 +1,10 @@
 "use client";
 
+import { HotelComponentsProps } from "@/utils/types";
 import { format } from "date-fns"
 import { useRouter } from "next/navigation";
 
-const FilterItem = ({ content }: any) => {
+const FilterItem = ({ content }: HotelComponentsProps) => {
     const { push } = useRouter();
 
     return (

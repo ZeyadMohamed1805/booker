@@ -8,29 +8,28 @@ const Footer = () => {
                     <img src="/images/main-logo.png" alt="Logo" className="w-[300px] h-fit" />
                     <div className="w-full flex flex-wrap justify-end max-[825px]:justify-between items-center gap-10">
                         {
-                            
-                                footerLinks.map((section, index) => (
-                                    <div key={index} className="flex flex-col gap-6">
-                                        <h1 className="text-xl font-semibold">
-                                            {
-                                                section.header
-                                            }
-                                        </h1>
-                                        <ul className="flex flex-col gap-3">
-                                            {
-                                                section.links.map((link, index) => (
-                                                    <li key={index} className="text-primary hover:text-opacity-50 duration-200 cursor-pointer">
-                                                        <a href={link.href}>
-                                                            {
-                                                                link.name
-                                                            }
-                                                        </a>
-                                                    </li>
-                                                ))
-                                            }
-                                        </ul>
-                                    </div>
-                                ))
+                            footerLinks.map((section, index) => (
+                                <div key={index} className="flex flex-col gap-6">
+                                    <h1 className="text-xl font-semibold">
+                                        {
+                                            section.header
+                                        }
+                                    </h1>
+                                    <ul className="flex flex-col gap-3">
+                                        {
+                                            section.links.map((link, index) => (
+                                                <li key={index} className="text-primary hover:text-opacity-50 duration-200 cursor-pointer">
+                                                    <a href={link.href}>
+                                                        {
+                                                            link.name
+                                                        }
+                                                    </a>
+                                                </li>
+                                            ))
+                                        }
+                                    </ul>
+                                </div>
+                            ))
                         }
                     </div>
                 </div>

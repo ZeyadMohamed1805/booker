@@ -1,16 +1,17 @@
 "use client";
 
+import { HotelComponentsProps } from "@/utils/types";
 import PopularItem from "../home/PopularItem";
 import useApi from "@/utils/useApi";
 
-const Suggested = ({ name, city }: any) => {
-    const { data, isLoading } = useApi("suggested_hotels", `/hotels/city?cities=${city}`);
+const Suggested = ({ content }: HotelComponentsProps) => {
+    const { data, isLoading } = useApi("suggested_hotels", `/hotels/city?cities=${content.city}`);
     
     return (
         <div className="w-full max-w-[1400px] p-5">
             <div className="w-full flex flex-col gap-6">
                 <h1 className="text-3xl font-bold">
-                    Other Hotels In { city }
+                    Other Hotels In { content.city }
                 </h1>
                 <div className="w-full flex items-center justify-between gap-3">
                     {
@@ -18,7 +19,7 @@ const Suggested = ({ name, city }: any) => {
                         <h1 className="text-xl font-bold">
                             Loading...
                         </h1> :
-                        data[0].filter((hotel: any) => hotel.name !== name).map((hotel: any) => (
+                        data[0].filter((hotel: any) => hotel.name !== content.name).map((hotel: any) => (
                             <PopularItem key={hotel._id} content={hotel} />
                         ))
                     }

@@ -1,10 +1,11 @@
 import { Intro, PopularItem, RecentItem, DealsItem, Browse } from "@/components";
 import client from "@/utils/client";
+import { HotelsApiType } from "@/utils/types";
 
 const Home = async () => {
-    const { data: popularItems } = await client.get("/hotels/popular");
-    const { data: recentItems } = await client.get("/hotels/recent");
-    const { data: dealItems } = await client.get("/hotels/deals");
+    const { data: popularItems }: HotelsApiType = await client.get("/hotels/popular");
+    const { data: recentItems }: HotelsApiType = await client.get("/hotels/recent");
+    const { data: dealItems }: HotelsApiType = await client.get("/hotels/deals");
 
     return (
         <>
@@ -16,8 +17,8 @@ const Home = async () => {
                     </h1>
                     <div className="w-full flex flex-wrap justify-between gap-10 max-[880px]:justify-center">
                         {
-                            popularItems.map((feature: any, index: number) => (
-                                <PopularItem key={index} content={feature} />
+                            popularItems.map(item => (
+                                <PopularItem key={item._id} content={item} />
                             ))
                         }
                     </div>
@@ -28,8 +29,8 @@ const Home = async () => {
                     </h1>
                     <div className="w-full flex flex-wrap justify-between items-center gap-10 max-[680px]:justify-center">
                         {
-                            recentItems.map((item: any, index: number) => (
-                                <RecentItem key={index} content={item} />
+                            recentItems.map(item => (
+                                <RecentItem key={item._id} content={item} />
                             ))
                         }
                     </div>
@@ -40,8 +41,8 @@ const Home = async () => {
                     </h1>
                     <div className="w-full flex flex-wrap justify-between gap-10 max-[880px]:justify-center">
                         {
-                            dealItems.map((item: any, index: number) => (
-                                <DealsItem key={index} content={item} />
+                            dealItems.map(item => (
+                                <DealsItem key={item._id} content={item} />
                             ))
                         }
                     </div>

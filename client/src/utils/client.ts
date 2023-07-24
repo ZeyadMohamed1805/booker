@@ -1,4 +1,4 @@
-import axios from "axios"
+import axios from "axios";
 
 const client = axios.create({
     baseURL: process.env.NEXT_PUBLIC_BASE_URL,

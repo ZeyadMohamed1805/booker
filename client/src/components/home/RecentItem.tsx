@@ -1,9 +1,9 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { RecentItemProps } from "@/utils/types";
+import { HomeComponentsProps } from "@/utils/types";
 
-const RecentItem = ({ content }: RecentItemProps) => {
+const RecentItem = ({ content }: HomeComponentsProps) => {
     const { push } = useRouter();
     
     return (

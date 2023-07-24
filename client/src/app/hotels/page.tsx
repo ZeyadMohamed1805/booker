@@ -1,8 +1,9 @@
 import { FilterItem, Search } from "@/components";
 import client from "@/utils/client";
+import { HotelsApiType, HotelsPageProps } from "@/utils/types";
 
-const Hotels = async ({ params, searchParams }: any) => {
-    const { data } = await client.get(`/hotels/search?city=${searchParams.city}&sort=${searchParams.sort}&range=${searchParams.range}`);
+const Hotels = async ({ params, searchParams }: HotelsPageProps ) => {
+    const { data }: HotelsApiType = await client.get(`/hotels/search?city=${searchParams.city}&sort=${searchParams.sort}&range=${searchParams.range}`);
     
     return (
         <>
@@ -15,7 +16,7 @@ const Hotels = async ({ params, searchParams }: any) => {
                             <h1 className="text-3xl text-primary font-semibold text-center py-52">
                                 No Hotels Found...
                             </h1> :
-                            data.map((item: any) => (
+                            data.map(item => (
                                 <FilterItem key={item._id} content={item} />
                             ))
                         }

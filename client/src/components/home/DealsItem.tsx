@@ -1,9 +1,9 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { DealsItemProps } from "@/utils/types";
+import { HomeComponentsProps } from "@/utils/types";
 
-const DealsItem = ({ content }: DealsItemProps) => {
+const DealsItem = ({ content }: HomeComponentsProps) => {
     const { push } = useRouter();
     
     return (

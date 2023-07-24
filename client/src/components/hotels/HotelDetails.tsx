@@ -13,8 +13,9 @@ import useUser from "@/utils/useUser";
 import { useForm } from "react-hook-form";
 import { Suggested } from "@/components";
 import client from "@/utils/client";
+import { HotelComponentsProps } from "@/utils/types";
 
-const HotelDetails = ({ content }: any) => {
+const HotelDetails = ({ content }: HotelComponentsProps) => {
     const [ slideNumber, setSlideNumber ] = useState(0);
     const [ open, setOpen ] = useState(false);
     const [ openDate, setOpenDate ] = useState(false);
@@ -161,7 +162,7 @@ const HotelDetails = ({ content }: any) => {
                         </button>
                     </form>
                 </div>
-                <Suggested name={content.name} city={content.city} />
+                <Suggested content={content} />
                 <Browse />
             </div>
         </>

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
+import { useUserType } from "./types";
 
-const useUser = () => {
+const useUser: useUserType = () => {
     const [ user, setUser ] = useState<any>({});
     const [ loading, setLoading ] = useState(true);
 

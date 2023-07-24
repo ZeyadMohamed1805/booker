@@ -1,9 +1,9 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { PopularItemProps } from "@/utils/types";
+import { HomeComponentsProps } from "@/utils/types";
 
-const PopularItem = ({ content }: PopularItemProps) => {
+const PopularItem = ({ content }: HomeComponentsProps) => {
     const { push } = useRouter();
     
     return (

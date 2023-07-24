@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 
 const RegisterForm = () => {
-    const { handleSubmit, register, formState: { errors } } = useForm();
+    const { handleSubmit, register } = useForm();
     const { push } = useRouter();
 
     const onSubmit = async ({ username, email, password }: any) => {
