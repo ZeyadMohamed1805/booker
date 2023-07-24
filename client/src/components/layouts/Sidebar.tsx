@@ -55,16 +55,16 @@ const Sidebar = () => {
                         </li>
                     </> :
                     <>
-                        <li className="w-full text-center z-50 cursor-pointer p-2 rounded-md uppercase bg-customWhite hover:bg-opacity-50 duration-200">
-                            <a href="/signup">
-                                Sign Up
-                            </a>
-                        </li>
-                        <li className="w-full text-center z-50 cursor-pointer p-2 rounded-md uppercase bg-customWhite hover:bg-opacity-50 duration-200">
-                            <a href="/signin">
+                        <a href="/signup">
+                            <li className="w-full text-center z-50 cursor-pointer p-2 rounded-md uppercase bg-customWhite hover:bg-opacity-50 duration-200">
+                                    Sign Up
+                            </li>
+                        </a>
+                        <a href="/signin">
+                            <li className="w-full text-center z-50 cursor-pointer p-2 rounded-md uppercase bg-customWhite hover:bg-opacity-50 duration-200">
                                 Sign In
-                            </a>
-                        </li>
+                            </li>
+                        </a>
                     </>
                 }
             </ul>

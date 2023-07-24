@@ -17,7 +17,9 @@ const RootLayout = ({ children }: ChildrenType) => {
             </head>
             <body className="font-primary">
                 <ReactQueryProvider>
-                    <Layout children={children} />
+                    <Layout>
+                        { children }
+                    </Layout>
                 </ReactQueryProvider>
             </body>
         </html>

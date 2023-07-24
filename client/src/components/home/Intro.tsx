@@ -9,7 +9,7 @@ const Intro = () => {
                 {/* Header Text Content */}
                 <div className="w-full flex flex-col gap-5 mt-5 mb-16 max-xl:mb-40">
                     <h1 className="text-3xl font-bold">
-                        A lifetime of discounts? It's Genius.
+                        A lifetime of discounts? It&apos;s Genius.
                     </h1>
                     <p>
                         Get rewarded for your travels - 

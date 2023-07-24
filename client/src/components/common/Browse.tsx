@@ -7,7 +7,7 @@ const Browse = () => (
             Start now and book your room in one of our Hotels.
             We have the best hotels with the best prices!
         </span>
-        <a href="/hotels?city=&sort=alphabetically&range=0,999999999" className="p-3 rounded-md bg-customBlue text-lg hover:opacity-50 font-semibold">
+        <a href="/hotels?city=&sort=alphabetically&range=0,999999999" className="p-3 rounded-md bg-customBlue text-lg hover:opacity-50 font-semibold duration-200">
             Browse Hotels
         </a>
     </div>
