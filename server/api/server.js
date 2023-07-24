@@ -4,11 +4,11 @@ import dotenv from "dotenv";
 import mongoose from "mongoose";
 import cors from "cors";
 import cookieParser from "cookie-parser";
-import customError from "./middlewares/errors.js";
-import authRoute from "./routes/auth.js";
-import hotelsRoute from "./routes/hotels.js";
-import roomsRoute from "./routes/rooms.js";
-import usersRoute from "./routes/users.js";
+import customError from "../middlewares/errors.js";
+import authRoute from "../routes/auth.js";
+import hotelsRoute from "../routes/hotels.js";
+import roomsRoute from "../routes/rooms.js";
+import usersRoute from "../routes/users.js";
 
 // ################################################
 
