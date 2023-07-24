@@ -2,7 +2,7 @@
 import User from "../models/users.js";
 import jwt from "jsonwebtoken";
 import createError from "../utils/createError.js";
-import hashPassword from "../utils/hashPassword.js";
+import hashPassword from "../utils/hashpassword.js";
 import comparePassword from "../utils/comparePassword.js";
 
 // ###########################################################################
