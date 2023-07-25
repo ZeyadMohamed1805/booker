@@ -1,21 +1,27 @@
 "use client";
 
-import client from "@/utils/client";
+import useAuth from "@/utils/useAuth";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
+import { useState, useEffect } from "react";
 
 const RegisterForm = () => {
     const { handleSubmit, register, formState: { errors } } = useForm();
+    const { isLoading, mutate, error } = useAuth("signup", "/auth/register");
+    const [ isSubmitted, setIsSubmitted ] = useState(false);
     const { push } = useRouter();
 
     const onSubmit = async ({ username, email, password }: any) => {
-        try {
-            const { status } = await client.post("/auth/register", { username: username,email: email, password: password });
-            if (status >= 200 && status < 300) push("/signin");
-        } catch (error) {
-            throw error;
-        }
+        mutate({ username: username, email: email, password: password });
+        setIsSubmitted(true);
     }
+
+    useEffect(() => {
+        if ( !isLoading && isSubmitted ) {
+            if ( error ) { setIsSubmitted(false); throw error }
+            else push("/signin");
+        }
+    }, [ isSubmitted, isLoading ]);
 
     return (
         <form onSubmit={handleSubmit(onSubmit)} className="w-full flex flex-col justify-between gap-16">
@@ -32,8 +38,12 @@ const RegisterForm = () => {
                 <span className="text-red-500">
                     { errors?.password?.message?.toString() }
                 </span>
-                <button type="submit" className="w-full bg-primary p-3 text-customWhite font-bold hover:bg-opacity-50 cursor-pointer rounded-md duration-200">
-                    Submit
+                <button disabled={isLoading ? true : false} type="submit" className={`w-full bg-primary p-3 text-customWhite font-bold hover:bg-opacity-50 ${isLoading ? " cursor-not-allowed" : "cursor-pointer"} ${isLoading && "bg-opacity-50"} rounded-md duration-200`}>
+                    {
+                        isLoading ?
+                        "Loading..." :
+                        "Submit"
+                    }
                 </button>
             </div>
             <div className="w-full flex flex-col gap-3">

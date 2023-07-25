@@ -1,4 +1,5 @@
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core"
+import { UseMutateFunction } from "react-query"
 
 
 // Props Types
@@ -55,6 +56,13 @@ export type useApiType = ( key: string, endpoint: string ) => {
 export type useUserType = () => {
     user: UserType,
     loading: boolean
+}
+
+export type useAuthType = ( key: string, endpoint: string ) => {
+    isLoading: boolean,
+    mutate: UseMutateFunction<any, unknown, any, unknown>,
+    data: any,
+    error: unknown
 }
 
 // API Types

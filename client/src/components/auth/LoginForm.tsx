@@ -1,25 +1,31 @@
 "use client";
 
-import client from "@/utils/client";
+import useAuth from "@/utils/useAuth";
 import { useRouter } from "next/navigation";
+import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 
 const LoginForm = () => {
     const { handleSubmit, register, formState: { errors } } = useForm();
+    const { isLoading, mutate, data, error } = useAuth("signin", "/auth/login");
+    const [ isSubmitted, setIsSubmitted ] = useState(false);
     const { push } = useRouter();
 
-    const onSubmit = async ({ username, password }: any) => {
-        const { data, status } = await client.post("/auth/login", { username: username, password: password });
+    const onSubmit = ({ username, password }: any) => {
+        mutate({ username: username, password: password });
+        setIsSubmitted(true);
+    }
 
-        if ( status >= 200 && status < 300 ) {
-            try {
+    useEffect(() => {
+        if ( !isLoading && isSubmitted && typeof data !== undefined ) {
+            if ( error ) { setIsSubmitted(false); throw error }
+            else {
+                data &&
                 localStorage.setItem("booker_user", JSON.stringify(data));
                 push("/home");
-            } catch (error) {
-                throw error;   
             }
         }
-    }
+    }, [ isSubmitted, isLoading, data ]);
 
     return (
         <form onSubmit={handleSubmit(onSubmit)} className="w-full flex flex-col justify-between gap-16">
@@ -32,8 +38,12 @@ const LoginForm = () => {
                 <span className="text-red-500">
                     { errors?.password?.message?.toString() }
                 </span>
-                <button type="submit" className="w-full bg-primary p-3 text-customWhite font-bold hover:bg-opacity-50 cursor-pointer rounded-md duration-200">
-                    Submit
+                <button disabled={isLoading ? true : false} type="submit" className={`w-full bg-primary p-3 text-customWhite hover:bg-opacity-50 font-bold ${isLoading && "bg-opacity-50"} ${isLoading ? " cursor-not-allowed" : "cursor-pointer"} rounded-md duration-200`}>
+                    {
+                        isLoading ?
+                        "Loading..." :
+                        "Submit"
+                    }
                 </button>
             </div>
             <div className="w-full flex flex-col gap-3">
