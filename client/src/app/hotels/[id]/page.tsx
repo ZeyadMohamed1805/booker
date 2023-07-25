@@ -1,3 +1,5 @@
+export const revalidate = 10;
+
 import { HotelApiType, HotelPageProps } from "@/utils/types";
 import HotelDetails from "@/components/hotels/HotelDetails";
 import client from "@/utils/client";

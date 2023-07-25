@@ -1,3 +1,5 @@
+export const revalidate = 10;
+
 import { FilterItem, Search } from "@/components";
 import client from "@/utils/client";
 import { HotelsApiType, HotelsPageProps } from "@/utils/types";

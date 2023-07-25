@@ -1,3 +1,5 @@
+export const revalidate = 10;
+
 import { Intro, PopularItem, RecentItem, DealsItem, Browse } from "@/components";
 import client from "@/utils/client";
 import { HotelsApiType } from "@/utils/types";

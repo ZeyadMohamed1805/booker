@@ -19,6 +19,7 @@ const Suggested = ({ content }: HotelComponentsProps) => {
                         <h1 className="text-xl font-bold">
                             Loading...
                         </h1> :
+                        data &&
                         data[0].filter((hotel: any) => hotel.name !== content.name).map((hotel: any) => (
                             <PopularItem key={hotel._id} content={hotel} />
                         ))
