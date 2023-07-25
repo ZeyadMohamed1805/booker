@@ -13,7 +13,7 @@ const Suggested = ({ content }: HotelComponentsProps) => {
                 <h1 className="text-3xl font-bold">
                     Other Hotels In { content.city }
                 </h1>
-                <div className="w-full flex items-center justify-between gap-3">
+                <div className="w-full flex flex-wrap justify-between gap-10 max-[880px]:justify-center">
                     {
                         isLoading ?
                         <h1 className="text-xl font-bold">
