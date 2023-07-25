@@ -22,7 +22,7 @@ const Search = ({ page, params }: any) => {
                         All
                     </option>
                     {
-                        !isLoading &&
+                        data &&
                         data.map((city: string, index: number) => (
                             <option key={index} value={city}>
                                 { city }
