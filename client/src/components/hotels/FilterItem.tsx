@@ -2,6 +2,7 @@
 
 import { HotelComponentsProps } from "@/utils/types";
 import { format } from "date-fns"
+import setGrade from "@/utils/setGrade";
 import { useRouter } from "next/navigation";
 
 const FilterItem = ({ content }: HotelComponentsProps) => {
@@ -45,7 +46,9 @@ const FilterItem = ({ content }: HotelComponentsProps) => {
             <div className="flex flex-col justify-between flex-1 min-w-fit gap-3">
                 <div className="flex justify-between">
                     <span className="text-2xl font-semibold">
-                        Excellent
+                            {
+                                setGrade(Number(content.rating))
+                            }
                     </span>
                     <label className="bg-customGold text-customWhite p-3 font-bold rounded-md border-none">
                         {

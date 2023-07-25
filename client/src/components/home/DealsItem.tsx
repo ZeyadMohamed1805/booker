@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { HomeComponentsProps } from "@/utils/types";
+import setGrade from "@/utils/setGrade";
 
 const DealsItem = ({ content }: HomeComponentsProps) => {
     const { push } = useRouter();
@@ -30,7 +31,9 @@ const DealsItem = ({ content }: HomeComponentsProps) => {
                     </span>
                     <div className="flex items-center gap-3">
                         <span className="text-lg">
-                            Excellent
+                            {
+                                setGrade(Number(content.rating))
+                            }
                         </span>
                         <label className="bg-customGold text-customWhite rounded-md p-2 font-bold">
                             {
