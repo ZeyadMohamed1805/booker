@@ -9,9 +9,12 @@ const RegisterForm = () => {
     const { push } = useRouter();
 
     const onSubmit = async ({ username, email, password }: any) => {
-        const { data } = await client.post("/auth/register", { username: username,email: email, password: password });
-        localStorage.setItem("booker_user", JSON.stringify(data));
-        push("/home");
+        try {
+            const { status } = await client.post("/auth/register", { username: username,email: email, password: password });
+            if (status >= 200 && status < 300) push("/signin");
+        } catch (error) {
+            throw error;
+        }
     }
 
     return (

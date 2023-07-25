@@ -5,13 +5,20 @@ import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 
 const LoginForm = () => {
-    const { handleSubmit, register, formState: { errors } } = useForm();
+    const { handleSubmit, register } = useForm();
     const { push } = useRouter();
 
     const onSubmit = async ({ username, password }: any) => {
-        const { data } = await client.post("/auth/login", { username: username, password: password });
-        localStorage.setItem("booker_user", JSON.stringify(data));
-        push("/home");
+        const { data, status } = await client.post("/auth/login", { username: username, password: password });
+
+        if ( status >= 200 && status < 300 ) {
+            try {
+                localStorage.setItem("booker_user", JSON.stringify(data));
+                push("/home");
+            } catch (error) {
+                throw error;   
+            }
+        }
     }
 
     return (
