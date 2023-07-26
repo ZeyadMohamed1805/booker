@@ -38,7 +38,7 @@ const LoginForm = () => {
                 <span className="text-red-500">
                     { errors?.password?.message?.toString() }
                 </span>
-                <button disabled={isLoading ? true : false} type="submit" className={`w-full bg-primary p-3 text-customWhite hover:bg-opacity-50 font-bold ${isLoading && "bg-opacity-50"} ${isLoading ? " cursor-not-allowed" : "cursor-pointer"} rounded-md duration-200`}>
+                <button disabled={isLoading ? true : false} type="submit" className={`w-full bg-primary p-3 text-customWhite hover:bg-opacity-50 font-bold ${isLoading && "bg-opacity-50"} ${isLoading ? "cursor-not-allowed" : "cursor-pointer"} rounded-md duration-200`}>
                     {
                         isLoading ?
                         "Loading..." :

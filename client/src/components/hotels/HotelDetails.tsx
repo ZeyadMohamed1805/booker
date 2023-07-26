@@ -7,13 +7,14 @@ import { DateRange } from "react-date-range";
 import { faCircleArrowLeft, faCircleArrowRight, faCircleXmark, faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Browse } from "@/components";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import useUser from "@/utils/useUser";
 import { useForm } from "react-hook-form";
 import { Suggested } from "@/components";
 import client from "@/utils/client";
 import { HotelComponentsProps } from "@/utils/types";
+import useReservation from "@/utils/useReservation";
 
 const HotelDetails = ({ content }: HotelComponentsProps) => {
     const [ slideNumber, setSlideNumber ] = useState(0);
@@ -25,23 +26,38 @@ const HotelDetails = ({ content }: HotelComponentsProps) => {
     const { push } = useRouter();
     const { user } = useUser();
     const { handleSubmit, register } = useForm();
+    const { mutate, isLoading, error, data  } = useReservation("reservation", `/users/book/${user._id}`);
+    const [ isSubmitted, setIsSubmitted ] = useState(false);
     
     const onSubmit = (values: any) => {
-        !Boolean(days) ?
-        setErrors("Rservation Must Be Atleast One Day") :
-        user.username ? 
-        client.put(`/users/book/${user._id}`, {
-            reservations: {
-                hotelName: content.name,
-                startDate: values.days[0].startDate,
-                endDate: values.days[0].endDate,
-                board: values.food,
-                price: Number(content.cheapestPrice) * days
-            }
-        }).then((response) => {console.log(response); localStorage.setItem("booker_user", JSON.stringify(response.data)); push("/success")}) :
-        push("/signin")
+        if ( !Boolean(days) ) setErrors("Reservation Must Be Atleast One Day")
+        else if ( user.username ) {
+            setIsSubmitted( true );
+
+            mutate({
+                reservations: {
+                    hotelName: content.name,
+                    startDate: values.days[0].startDate,
+                    endDate: values.days[0].endDate,
+                    board: values.food,
+                    price: Number(content.cheapestPrice) * days
+                }
+            })}
+
+        else !errors.length && push("/signin")
 
     }
+
+    useEffect(() => {
+        if ( !isLoading && isSubmitted && typeof data !== undefined ) {
+            if ( error ) { setIsSubmitted(false); push("/signin"); throw error; }
+            else {
+                data &&
+                localStorage.setItem("booker_user", JSON.stringify(data));
+                push("/success");
+            }
+        }
+    }, [ isSubmitted, isLoading, data ]);
 
     return (
         <>
@@ -157,8 +173,12 @@ const HotelDetails = ({ content }: HotelComponentsProps) => {
                                 }
                             </span>
                         </h2>
-                        <button type="submit" className="bg-customBlue text-customWhite font-bold border-none p-3 rounded-md cursor-pointer h-fit hover:bg-opacity-50 duration-200">
-                            Reserve or Book Now!
+                        <button disabled={isLoading ? true : false} type="submit" className={`bg-customBlue text-customWhite ${isLoading && "bg-opacity-50"} ${isLoading ? "cursor-not-allowed" : "cursor-pointer"} font-bold border-none p-3 rounded-md h-fit hover:bg-opacity-50 duration-200`}>
+                            {
+                                isLoading ?
+                                "Loading..." :
+                                "Reserve or Book Now!"
+                            }
                         </button>
                     </form>
                 </div>
