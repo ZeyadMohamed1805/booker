@@ -32,8 +32,6 @@ const HotelDetails = ({ content }: HotelComponentsProps) => {
     const onSubmit = (values: any) => {
         if ( !Boolean(days) ) setErrors("Reservation Must Be Atleast One Day")
         else if ( user.username ) {
-            setIsSubmitted( true );
-
             mutate({
                 reservations: {
                     hotelName: content.name,
@@ -42,7 +40,9 @@ const HotelDetails = ({ content }: HotelComponentsProps) => {
                     board: values.food,
                     price: Number(content.cheapestPrice) * days
                 }
-            })}
+            });
+            setIsSubmitted( true );
+        }
 
         else !errors.length && push("/signin")
 
