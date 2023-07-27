@@ -19,11 +19,11 @@ const Navbar = () => {
                     <h1 className="text-xl font-semibold max-[500px]:hidden">
                         Loading...
                     </h1>:
-                    user.username ?
+                    user.token ?
                     <div onClick={() => setOpen(previous => !previous)} className="flex gap-3 cursor-pointer max-[500px]:hidden">
                         <h1 className="text-xl font-semibold">
                             {
-                                user.username
+                                user.user.username
                             }
                         </h1>
                         <FontAwesomeIcon icon={faSortDown} className="w-6 text-xl" />

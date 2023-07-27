@@ -48,7 +48,7 @@ export const login = async ( request, response, next ) => {
         // Create JWT Token
         const token = jwt.sign({ id: user._id, isAdmin: user.isAdmin }, process.env.JWT_SECRET, { expiresIn: process.env.JWT_LIFETIME });
         // Send The User As A Response To The Client
-        response.cookie("access_token", token, { httpOnly: true }).status(200).json(user);
+        response.status(200).json({ user: user, token: token });
     } catch (error) {
         // Send The Error As A Response To The Client
         return next(createError(500, "Login Failed..."));

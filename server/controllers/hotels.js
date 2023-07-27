@@ -23,11 +23,11 @@ export const createHotel = async ( request, response, next ) => {
 // Update Hotel
 export const updateHotel = async ( request, response, next ) => {
     // Destruct The ID And Body From The Request
-    const { body, params: { id } } = request;
+    const { body: { reservations }, params: { id } } = request;
 
     try {
         // Update The Hotel To The Database
-        const updatedHotel = await Hotel.findByIdAndUpdate( id, { $set: body }, { new: true });
+        const updatedHotel = await Hotel.findByIdAndUpdate( id, { $set: reservations }, { new: true });
         // Send The Updated Hotel As A Response To The Client
         response.status(200).json(updatedHotel);
     } catch (error) {

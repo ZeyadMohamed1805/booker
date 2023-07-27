@@ -12,18 +12,18 @@ const Sidebar = () => {
     }
 
     return (
-        <div className={`z-50 max-[500px]:w-full ${user.username ? "flex" : "hidden"} max-[500px]:flex justify-center rounded-md absolute top-20 right-0 w-[500px]`}>
+        <div className={`z-50 max-[500px]:w-full ${user.token ? "flex" : "hidden"} max-[500px]:flex justify-center rounded-md absolute top-20 right-0 w-[500px]`}>
             <ul className="z-50 max-w-[1400px] gap-5 bg-customBlue p-5 rounded-md w-full text-primary text-xl duration-200 font-semibold flex flex-col">
                 {
                     loading ?
                     <h1 className="text-xl font-semibold text-customWhite">
                         Loading...
                     </h1> :
-                    user.username ?
+                    user.token ?
                     <>
                         <label className="w-full text-center text-xl font-bold bg-customWhite text-primary rounded-md p-3">
                             {
-                                user.username
+                                user.user.username
                             }
                         </label>
                         <h1 className="text-xl font-semibold text-customWhite flex justify-between items-center gap-3 w-full">
@@ -32,12 +32,12 @@ const Sidebar = () => {
                             </span>
                             <span>
                                 {
-                                    user.reservations.length
+                                    user.user.reservations.length
                                 }
                             </span>
                         </h1>
                         {
-                            user.reservations.map((reservation: any, index: number) => (
+                            user.user.reservations.map((reservation: any, index: number) => (
                                 <li key={index} className="w-full flex items-center justify-between gap-3 text-white text-base font-semibold">
                                     <span>
                                         - {reservation.hotelName}

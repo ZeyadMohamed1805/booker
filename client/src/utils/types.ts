@@ -76,15 +76,18 @@ export type ReservationType = {
 }
 
 export type UserType = {
-    _id: string,
-    username: string,
-    email: string,
-    password: string,
-    isAdmin: boolean,
-    reservations: Array<ReservationType>,
-    createdAt: Date,
-    updatedAt: Date,
-    __v: number
+    token: string,
+    user: {
+        _id: string,
+        username: string,
+        email: string,
+        password: string,
+        isAdmin: boolean,
+        reservations: Array<ReservationType>,
+        createdAt: Date,
+        updatedAt: Date,
+        __v: number
+    }
 }
 
 export type HotelsType = {

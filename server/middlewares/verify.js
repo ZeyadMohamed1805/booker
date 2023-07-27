@@ -5,13 +5,13 @@ import createError from "../utils/createError.js";
 // Verify Token
 export const verifyToken = ( request, response, next ) => {
     // Destruct The Token From The Request Cookies
-    const { access_token } = request.cookies;
+    const { token } = request.body;
 
     // Check If Token Doesn't Exist
-    if ( !access_token ) return next( createError( 401, "You Are Not Authenticated..." ) );
+    if ( !token ) return next( createError( 401, "You Are Not Authenticated..." ) );
 
     // Verify Token
-    jwt.verify( access_token, process.env.JWT_SECRET, ( error, user ) => {
+    jwt.verify( token, process.env.JWT_SECRET, ( error, user ) => {
         // Check Token Validity
         if ( error ) return next( createError( 401, "Invalid Token..." ) );
 

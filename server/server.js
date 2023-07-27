@@ -24,7 +24,7 @@ dotenv.config();
 // ################################################
 
 // Middlewares
-server.use(cors({ origin: ["https://booker-liard.vercel.app", "http://localhost:3000"], credentials: true }));
+server.use(cors({ origin: ["https://booker-liard.vercel.app", "http://localhost:3000"] }));
 server.use(cookieParser());
 server.use(express.json());
 server.use(express.urlencoded({ extended: false }));

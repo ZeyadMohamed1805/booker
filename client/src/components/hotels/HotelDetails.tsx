@@ -12,7 +12,6 @@ import { useRouter } from "next/navigation";
 import useUser from "@/utils/useUser";
 import { useForm } from "react-hook-form";
 import { Suggested } from "@/components";
-import client from "@/utils/client";
 import { HotelComponentsProps } from "@/utils/types";
 import useReservation from "@/utils/useReservation";
 
@@ -26,13 +25,14 @@ const HotelDetails = ({ content }: HotelComponentsProps) => {
     const { push } = useRouter();
     const { user } = useUser();
     const { handleSubmit, register } = useForm();
-    const { mutate, isLoading, error, data  } = useReservation("reservation", `/users/book/${user._id}`);
+    const { mutate, isLoading, error, data  } = useReservation("reservation", `/users/book/${user.token && user.user._id}`);
     const [ isSubmitted, setIsSubmitted ] = useState(false);
     
     const onSubmit = (values: any) => {
         if ( !Boolean(days) ) setErrors("Reservation Must Be Atleast One Day")
-        else if ( user.username ) {
+        else if ( user.token ) {
             mutate({
+                token: user.token,
                 reservations: {
                     hotelName: content.name,
                     startDate: values.days[0].startDate,
@@ -53,7 +53,7 @@ const HotelDetails = ({ content }: HotelComponentsProps) => {
             if ( error ) { setIsSubmitted(false); push("/signin"); throw error; }
             else {
                 data &&
-                localStorage.setItem("booker_user", JSON.stringify(data));
+                localStorage.setItem("booker_user", JSON.stringify({ token: user.token, user: data }));
                 push("/success");
             }
         }
