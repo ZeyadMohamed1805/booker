@@ -7,7 +7,7 @@ import { useState, useEffect } from "react";
 
 const RegisterForm = () => {
     const { handleSubmit, register, formState: { errors } } = useForm();
-    const { isLoading, mutate, error } = useAuth("signup", "/auth/register");
+    const { isLoading, mutate, isError, error } = useAuth("signup", "/auth/register");
     const [ isSubmitted, setIsSubmitted ] = useState(false);
     const { push } = useRouter();
 
@@ -18,7 +18,7 @@ const RegisterForm = () => {
 
     useEffect(() => {
         if ( !isLoading && isSubmitted ) {
-            if ( error ) { setIsSubmitted(false); throw error }
+            if ( isError ) { setIsSubmitted(false); console.log( error ) }
             else push("/signin");
         }
     }, [ isSubmitted, isLoading ]);
@@ -37,6 +37,9 @@ const RegisterForm = () => {
                 <input {...register("password", { required: "Password is required.", minLength: { value: 8, message: "Password is less than 8 digits" } })} type="password" placeholder="Password" className="w-full p-3 rounded-md border-solid border-gray-400 border-2 text-gray-400" />
                 <span className="text-red-500">
                     { errors?.password?.message?.toString() }
+                </span>
+                <span className="text-red-500 text-sm">
+                    { isError && error?.response?.data }
                 </span>
                 <button disabled={isLoading ? true : false} type="submit" className={`w-full bg-primary p-3 text-customWhite font-bold hover:bg-opacity-50 ${isLoading ? " cursor-not-allowed" : "cursor-pointer"} ${isLoading && "bg-opacity-50"} rounded-md duration-200`}>
                     {

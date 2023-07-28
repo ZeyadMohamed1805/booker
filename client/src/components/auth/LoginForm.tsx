@@ -7,7 +7,7 @@ import { useForm } from "react-hook-form";
 
 const LoginForm = () => {
     const { handleSubmit, register, formState: { errors } } = useForm();
-    const { isLoading, mutate, data, error } = useAuth("signin", "/auth/login");
+    const { isLoading, mutate, data, isError, error } = useAuth("signin", "/auth/login");
     const [ isSubmitted, setIsSubmitted ] = useState(false);
     const { push } = useRouter();
 
@@ -18,7 +18,7 @@ const LoginForm = () => {
 
     useEffect(() => {
         if ( !isLoading && isSubmitted && typeof data !== undefined ) {
-            if ( error ) { setIsSubmitted(false); throw error }
+            if ( isError ) { setIsSubmitted(false); console.log(error); }
             else {
                 data &&
                 localStorage.setItem("booker_user", JSON.stringify(data));
@@ -37,6 +37,9 @@ const LoginForm = () => {
                 <input {...register("password", { required: "Password is required.", minLength: { value: 8, message: "Password is less than 8 digits" } })} type="password" placeholder="Password" className="w-full p-3 rounded-md border-solid border-gray-400 border-2 text-gray-400" />
                 <span className="text-red-500">
                     { errors?.password?.message?.toString() }
+                </span>
+                <span className="text-red-500 text-sm">
+                    { isError && error?.response?.data }
                 </span>
                 <button disabled={isLoading ? true : false} type="submit" className={`w-full bg-primary p-3 text-customWhite hover:bg-opacity-50 font-bold ${isLoading && "bg-opacity-50"} ${isLoading ? "cursor-not-allowed" : "cursor-pointer"} rounded-md duration-200`}>
                     {

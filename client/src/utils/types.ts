@@ -62,7 +62,8 @@ export type useAuthType = ( key: string, endpoint: string ) => {
     isLoading: boolean,
     mutate: UseMutateFunction<any, unknown, any, unknown>,
     data: any,
-    error: unknown
+    isError: boolean,
+    error: any
 }
 
 // API Types
