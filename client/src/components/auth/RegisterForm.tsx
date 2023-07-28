@@ -2,26 +2,14 @@
 
 import useAuth from "@/utils/useAuth";
 import { useForm } from "react-hook-form";
-import { useRouter } from "next/navigation";
-import { useState, useEffect } from "react";
 
 const RegisterForm = () => {
     const { handleSubmit, register, formState: { errors } } = useForm();
-    const { isLoading, mutate, isError, error } = useAuth("signup", "/auth/register");
-    const [ isSubmitted, setIsSubmitted ] = useState(false);
-    const { push } = useRouter();
+    const { mutate, isLoading } = useAuth("signup", "/auth/register");
 
     const onSubmit = async ({ username, email, password }: any) => {
         mutate({ username: username, email: email, password: password });
-        setIsSubmitted(true);
     }
-
-    useEffect(() => {
-        if ( !isLoading && isSubmitted ) {
-            if ( isError ) { setIsSubmitted(false); alert( error.response.data ) }
-            else push("/signin");
-        }
-    }, [ isSubmitted, isLoading ]);
 
     return (
         <form onSubmit={handleSubmit(onSubmit)} className="w-full flex flex-col justify-between gap-16">

@@ -25,8 +25,7 @@ const HotelDetails = ({ content }: HotelComponentsProps) => {
     const { push } = useRouter();
     const { user } = useUser();
     const { handleSubmit, register } = useForm();
-    const { mutate, isLoading, isError, error, data  } = useReservation("reservation", `/users/book/${user.token && user.user._id}`);
-    const [ isSubmitted, setIsSubmitted ] = useState(false);
+    const { mutate, isLoading  } = useReservation("reservation", `/users/book/${user.token && user.user._id}`);
     
     const onSubmit = (values: any) => {
         if ( !Boolean(days) ) setErrors("Reservation Must Be Atleast One Day")
@@ -41,23 +40,9 @@ const HotelDetails = ({ content }: HotelComponentsProps) => {
                     price: Number(content.cheapestPrice) * days
                 }
             });
-            setIsSubmitted( true );
         }
-
         else !errors.length && push("/signin")
-
     }
-
-    useEffect(() => {
-        if ( !isLoading && isSubmitted && typeof data !== undefined ) {
-            if ( isError ) { setIsSubmitted(false); push("/signin"); alert( error.response.data ); }
-            else {
-                data &&
-                localStorage.setItem("booker_user", JSON.stringify({ token: user.token, user: data }));
-                push("/success");
-            }
-        }
-    }, [ isSubmitted, isLoading, data ]);
 
     return (
         <>

@@ -58,12 +58,9 @@ export type useUserType = () => {
     loading: boolean
 }
 
-export type useAuthType = ( key: string, endpoint: string ) => {
-    isLoading: boolean,
+export type useAuthReservationType = ( key: string, endpoint: string ) => {
     mutate: UseMutateFunction<any, unknown, any, unknown>,
-    data: any,
-    isError: boolean,
-    error: any
+    isLoading: boolean,
 }
 
 // API Types
