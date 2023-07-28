@@ -18,7 +18,7 @@ const RegisterForm = () => {
 
     useEffect(() => {
         if ( !isLoading && isSubmitted ) {
-            if ( isError ) { setIsSubmitted(false); console.log( error ) }
+            if ( isError ) { setIsSubmitted(false); alert( error ) }
             else push("/signin");
         }
     }, [ isSubmitted, isLoading ]);
@@ -37,9 +37,6 @@ const RegisterForm = () => {
                 <input {...register("password", { required: "Password is required.", minLength: { value: 8, message: "Password is less than 8 digits" } })} type="password" placeholder="Password" className="w-full p-3 rounded-md border-solid border-gray-400 border-2 text-gray-400" />
                 <span className="text-red-500">
                     { errors?.password?.message?.toString() }
-                </span>
-                <span className="text-red-500 text-sm">
-                    { isError && error?.response?.data }
                 </span>
                 <button disabled={isLoading ? true : false} type="submit" className={`w-full bg-primary p-3 text-customWhite font-bold hover:bg-opacity-50 ${isLoading ? " cursor-not-allowed" : "cursor-pointer"} ${isLoading && "bg-opacity-50"} rounded-md duration-200`}>
                     {
