@@ -25,7 +25,7 @@ const HotelDetails = ({ content }: HotelComponentsProps) => {
     const { push } = useRouter();
     const { user } = useUser();
     const { handleSubmit, register } = useForm();
-    const { mutate, isLoading, error, data  } = useReservation("reservation", `/users/book/${user.token && user.user._id}`);
+    const { mutate, isLoading, isError, error, data  } = useReservation("reservation", `/users/book/${user.token && user.user._id}`);
     const [ isSubmitted, setIsSubmitted ] = useState(false);
     
     const onSubmit = (values: any) => {
@@ -50,7 +50,7 @@ const HotelDetails = ({ content }: HotelComponentsProps) => {
 
     useEffect(() => {
         if ( !isLoading && isSubmitted && typeof data !== undefined ) {
-            if ( error ) { setIsSubmitted(false); push("/signin"); throw error; }
+            if ( isError ) { setIsSubmitted(false); push("/signin"); console.log( error ); }
             else {
                 data &&
                 localStorage.setItem("booker_user", JSON.stringify({ token: user.token, user: data }));
@@ -173,6 +173,9 @@ const HotelDetails = ({ content }: HotelComponentsProps) => {
                                 }
                             </span>
                         </h2>
+                        <span className="text-red-500">
+                            { isError && error.response.data }
+                        </span>
                         <button disabled={isLoading ? true : false} type="submit" className={`bg-customBlue text-customWhite ${isLoading && "bg-opacity-50"} ${isLoading ? "cursor-not-allowed" : "cursor-pointer"} font-bold border-none p-3 rounded-md h-fit hover:bg-opacity-50 duration-200`}>
                             {
                                 isLoading ?
