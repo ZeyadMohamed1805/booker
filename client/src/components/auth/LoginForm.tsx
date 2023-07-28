@@ -18,7 +18,7 @@ const LoginForm = () => {
 
     useEffect(() => {
         if ( !isLoading && isSubmitted && typeof data !== undefined ) {
-            if ( isError ) { setIsSubmitted(false); alert(error); }
+            if ( isError ) { setIsSubmitted(false); alert(error.response.data); }
             else {
                 data &&
                 localStorage.setItem("booker_user", JSON.stringify(data));

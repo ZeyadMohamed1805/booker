@@ -18,7 +18,7 @@ const RegisterForm = () => {
 
     useEffect(() => {
         if ( !isLoading && isSubmitted ) {
-            if ( isError ) { setIsSubmitted(false); alert( error ) }
+            if ( isError ) { setIsSubmitted(false); alert( error.response.data ) }
             else push("/signin");
         }
     }, [ isSubmitted, isLoading ]);

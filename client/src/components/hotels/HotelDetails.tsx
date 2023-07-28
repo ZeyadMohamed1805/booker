@@ -50,7 +50,7 @@ const HotelDetails = ({ content }: HotelComponentsProps) => {
 
     useEffect(() => {
         if ( !isLoading && isSubmitted && typeof data !== undefined ) {
-            if ( isError ) { setIsSubmitted(false); push("/signin"); alert( error ); }
+            if ( isError ) { setIsSubmitted(false); push("/signin"); alert( error.response.data ); }
             else {
                 data &&
                 localStorage.setItem("booker_user", JSON.stringify({ token: user.token, user: data }));
