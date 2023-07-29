@@ -5,7 +5,7 @@ const Footer = () => {
         <footer className="w-full p-5 flex justify-center">
             <div className="w-full max-w-[1400px] flex flex-col items-center">
                 <div className="w-full flex max-[825px]:flex-col max-[825px]:items-center justify-between gap-10 mb-10">
-                    <img src="/images/main-logo.png" alt="Logo" className="w-[300px] h-fit" />
+                    <img src="/images/main-logo.png" alt="Logo" className="w-[300px] max-w-[300px]" />
                     <div className="w-full flex flex-wrap justify-end max-[825px]:justify-between items-center gap-10">
                         {
                             footerLinks.map((section, index) => (
