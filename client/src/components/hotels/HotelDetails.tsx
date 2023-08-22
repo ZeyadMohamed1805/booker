@@ -14,6 +14,7 @@ import { useForm } from "react-hook-form";
 import { Suggested } from "@/components";
 import { HotelComponentsProps } from "@/utils/types";
 import useReservation from "@/utils/useReservation";
+import Link from "next/link";
 
 const HotelDetails = ({ content }: HotelComponentsProps) => {
     const [ slideNumber, setSlideNumber ] = useState(0);
@@ -92,9 +93,9 @@ const HotelDetails = ({ content }: HotelComponentsProps) => {
                             }
                         </span>
                     </div>
-                    <a href="/hotels?city=&sort=alphabetically&range=0,999999999" className="text-center bg-customBlue text-customWhite font-bold border-none p-3 rounded-md cursor-pointer h-fit hover:bg-opacity-50 duration-200">
+                    <Link prefetch href="/hotels?city=&sort=alphabetically&range=0,999999999" className="text-center bg-customBlue text-customWhite font-bold border-none p-3 rounded-md cursor-pointer h-fit hover:bg-opacity-50 duration-200">
                         Browse More Hotels!
-                    </a>
+                    </Link>
                 </div>
                 <div className="min-h-fit max-w-[1400px] flex flex-wrap justify-between gap-x-[1.5%] gap-y-[5%] max-[850px]:gap-y-[3%] max-[500px]:gap-y-[1.5%] max-[500px]:mb-28 rounded-md p-5">
                     {

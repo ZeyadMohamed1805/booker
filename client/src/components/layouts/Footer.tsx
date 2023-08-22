@@ -1,4 +1,5 @@
 import { footerLinks } from "@/utils/constants";
+import Link from "next/link";
 
 const Footer = () => {
     return (
@@ -19,11 +20,11 @@ const Footer = () => {
                                         {
                                             section.links.map((link, index) => (
                                                 <li key={index} className="text-primary hover:text-opacity-50 duration-200 cursor-pointer">
-                                                    <a href={link.href}>
+                                                    <Link prefetch href={link.href}>
                                                         {
                                                             link.name
                                                         }
-                                                    </a>
+                                                    </Link>
                                                 </li>
                                             ))
                                         }

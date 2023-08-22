@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import useAuth from "@/utils/useAuth";
 import { useForm } from "react-hook-form";
 
@@ -34,9 +35,9 @@ const LoginForm = () => {
                 <p className="w-full text-gray-400 text-center">
                     New To Our Website?
                 </p>
-                <a href="/signup" className="w-full bg-primary p-3 text-center text-customWhite font-bold hover:bg-opacity-50 cursor-pointer rounded-md duration-200">
+                <Link prefetch href="/signup" className="w-full bg-primary p-3 text-center text-customWhite font-bold hover:bg-opacity-50 cursor-pointer rounded-md duration-200">
                     Sign Up
-                </a>
+                </Link>
             </div>
         </form>
     )

@@ -1,6 +1,7 @@
 "use client";
 
 import Sidebar from "./Sidebar";
+import Link from "next/link";
 import { faBars, faSortDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
@@ -30,14 +31,14 @@ const Navbar = () => {
                     </div> :
                     <ul className="flex gap-5 text-primary text-xl duration-200 font-semibold max-[500px]:hidden">
                         <li className="cursor-pointer p-2 rounded-md uppercase bg-customWhite hover:bg-opacity-50 duration-200">
-                            <a href="/signup">
+                            <Link prefetch href="/signup">
                                 Sign Up
-                            </a>
+                            </Link>
                         </li>
                         <li className="cursor-pointer p-2 rounded-md uppercase bg-customWhite hover:bg-opacity-50 duration-200">
-                            <a href="/signin">
+                            <Link prefetch href="/signin">
                                 Sign In
-                            </a>
+                            </Link>
                         </li>
                     </ul>
                 }

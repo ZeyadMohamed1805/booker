@@ -1,5 +1,6 @@
 import { faCheckCircle } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import Link from "next/link"
 
 const Success = () => {
     return (
@@ -13,9 +14,9 @@ const Success = () => {
                 <h2 className="text-3xl font-semibold max-[500px]:text-xl">
                     You have successfully booked the Hotel Room!
                 </h2>
-                <a href="/home" className="bg-green-400 text-customWhite text-center font-semibold p-3 rounded-md hover:bg-opacity-50 duration-200">
+                <Link href="/home" className="bg-green-400 text-customWhite text-center font-semibold p-3 rounded-md hover:bg-opacity-50 duration-200">
                     Homepage
-                </a>
+                </Link>
             </div>
         </div>
     )

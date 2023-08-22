@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { format } from "date-fns";
 import useUser from "@/utils/useUser";
 
@@ -55,16 +56,16 @@ const Sidebar = () => {
                         </li>
                     </> :
                     <>
-                        <a href="/signup">
+                        <Link prefetch href="/signup">
                             <li className="w-full text-center z-50 cursor-pointer p-2 rounded-md uppercase bg-customWhite hover:bg-opacity-50 duration-200">
                                     Sign Up
                             </li>
-                        </a>
-                        <a href="/signin">
+                        </Link>
+                        <Link prefetch href="/signin">
                             <li className="w-full text-center z-50 cursor-pointer p-2 rounded-md uppercase bg-customWhite hover:bg-opacity-50 duration-200">
                                 Sign In
                             </li>
-                        </a>
+                        </Link>
                     </>
                 }
             </ul>

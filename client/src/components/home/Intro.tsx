@@ -1,6 +1,7 @@
 "use client";
 
 import Search from "../common/Search";
+import Link from "next/link";
 
 const Intro = () => {
     return (
@@ -15,9 +16,9 @@ const Intro = () => {
                         Get rewarded for your travels - 
                         Unlock instant savings of 10% or more with a Free Booker Account!
                     </p>
-                    <a href="/hotels?city=&sort=alphabetically&range=0,999999999" className="w-fit bg-customBlue text-white font-bold p-3 cursor-pointer rounded-md hover:bg-opacity-50 duration-200">
+                    <Link prefetch href="/hotels?city=&sort=alphabetically&range=0,999999999" className="w-fit bg-customBlue text-white font-bold p-3 cursor-pointer rounded-md hover:bg-opacity-50 duration-200">
                         Browse Hotels
-                    </a>
+                    </Link>
                 </div>
                 {/* Header Search */}
                 <Search page="home" />
