@@ -1,6 +1,7 @@
 "use client";
 
 import Sidebar from "./Sidebar";
+import Image from "next/image";
 import Link from "next/link";
 import { faBars, faSortDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -14,7 +15,7 @@ const Navbar = () => {
     return (
         <nav className="bg-primary flex justify-center p-5">
             <div className="w-full text-customWhite flex items-center justify-between max-w-[1400px] relative">
-                <img src="/images/navbar-logo.png" alt="Booker" className="w-[200px] max-w-[200px]" />
+                <Image width={200} height={71} src="/images/navbar-logo.png" alt="Booker" className="w-[200px] max-w-[200px]" />
                 {
                     loading ?
                     <h1 className="text-xl font-semibold max-[500px]:hidden">

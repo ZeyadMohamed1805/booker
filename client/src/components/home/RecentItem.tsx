@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { HomeComponentsProps } from "@/utils/types";
 
@@ -8,7 +9,7 @@ const RecentItem = ({ content }: HomeComponentsProps) => {
     
     return (
         <div onClick={() => push(`/hotels/${content._id}`)} className="rounded-md overflow-hidden cursor-pointer shadow-lg max-[680px]:w-full w-[300px] hover:scale-[1.05] duration-200">
-            <img src={content.photos[0]} alt={content.name} className="w-full object-cover aspect-[3/2]" />
+            <Image src={content.photos[0]} width={680} height={200} alt={content.name} className="min-w-full object-cover aspect-[3/2]" />
             <div className="p-3">
                 <h1 className="text-2xl font-semibold">
                     {

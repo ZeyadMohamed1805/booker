@@ -7,13 +7,14 @@ import { DateRange } from "react-date-range";
 import { faCircleArrowLeft, faCircleArrowRight, faCircleXmark, faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Browse } from "@/components";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 import useUser from "@/utils/useUser";
 import { useForm } from "react-hook-form";
 import { Suggested } from "@/components";
 import { HotelComponentsProps } from "@/utils/types";
 import useReservation from "@/utils/useReservation";
+import Image from "next/image";
 import Link from "next/link";
 
 const HotelDetails = ({ content }: HotelComponentsProps) => {
@@ -58,7 +59,7 @@ const HotelDetails = ({ content }: HotelComponentsProps) => {
                             <FontAwesomeIcon icon={faCircleArrowLeft} onClick={() => slideNumber > 0 && setSlideNumber(previous => --previous)} className="text-3xl w-10 h-10 text-customBlue" />
                         </div>
                         <div className="w-full h-full flex justify-center items-center">
-                            <img src={content.photos[slideNumber]} alt="Image" className=" mx-5 max-w-[850px] w-full max-h-4/5 rounded-md" />
+                            <Image src={content.photos[slideNumber]} width={850} height={565} alt="Image" className=" mx-5 max-w-[850px] w-full max-h-4/5 rounded-md" />
                         </div>
                         <div className="absolute right-0 m-10 text-3xl w-10 h-10 rounded-full cursor-pointer bg-customWhite">
                             <FontAwesomeIcon icon={faCircleArrowRight} onClick={() => slideNumber < 5 && setSlideNumber(previous => ++previous)} className="text-3xl w-10 h-10 text-customBlue" />
@@ -101,7 +102,7 @@ const HotelDetails = ({ content }: HotelComponentsProps) => {
                     {
                         content.photos.map((image: string, index: number) => (
                             <div key={index} className="h-[49%] w-[32%] max-[850px]:w-[49%] max-[850px]:h-[32%] max-[500px]:w-[100%] max-[500px]:h-[16.67%]">
-                                <img onClick={() => {setSlideNumber(index); setOpen(true)}} src={image} alt={content.name} className="h-full w-full object-cover cursor-pointer rounded-md hover:scale-[1.05] duration-200" />
+                                <Image onClick={() => {setSlideNumber(index); setOpen(true)}} src={image} width={450} height={326} alt={content.name} className="h-full w-full object-cover cursor-pointer rounded-md hover:scale-[1.05] duration-200" />
                             </div>
                         ))
                     }

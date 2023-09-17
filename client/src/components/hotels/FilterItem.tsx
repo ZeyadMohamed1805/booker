@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { HotelComponentsProps } from "@/utils/types";
 import { format } from "date-fns"
 import setGrade from "@/utils/setGrade";
@@ -10,7 +11,7 @@ const FilterItem = ({ content }: HotelComponentsProps) => {
 
     return (
     <div className="border-solid border-customBlue border-4 p-3 rounded-md flex gap-6 max-md:flex-col">
-        <img src={content.photos[0]} alt={content.name} className="w-96 object-cover rounded-md max-lg:w-full" />
+        <Image src={content.photos[0]} width={384} height={328} alt={content.name} className="w-96 object-cover rounded-md max-lg:w-full" />
         <div className="w-full flex gap-10 max-lg:flex-col">
             <div className="flex flex-col gap-3 flex-2">
                 <h1 className="text-2xl font-semibold text-customBlue">

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { ChildrenType } from "@/utils/types";
 
 const AuthLayout = ({ children }: ChildrenType) => {
@@ -8,7 +9,7 @@ const AuthLayout = ({ children }: ChildrenType) => {
             </div>
             <div className="w-[400px] max-lg:w-full h-screen grid place-items-center bg-customWhite shadow-black shadow-2xl p-5">
                 <div className="min-h-[35rem] max-w-[500px] rounded-md flex flex-col justify-between items-center gap-6 p-3 overflow-hidden">
-                    <img src="/images/main-logo.png" alt="Booker" className="w-[300px] rounded-md -mt-12" />
+                    <Image src="/images/main-logo.png" width={300} height={225} alt="Booker" className="w-[300px] rounded-md -mt-12" />
                     {children}
                 </div>
             </div>
