@@ -42,7 +42,7 @@ const HotelDetails = ({ content }: HotelComponentsProps) => {
                 }
             });
         }
-        else !errors.length && push("/signin")
+        else push("/signin");
     }
 
     return (
