@@ -1,4 +1,4 @@
-export const revalidate = 10;
+export const revalidate = 1;
 
 import { FilterItem, Search } from "@/components";
 import client from "@/utils/client";

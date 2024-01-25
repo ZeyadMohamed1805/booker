@@ -1,4 +1,4 @@
-export const revalidate = 10;
+export const revalidate = 1;
 
 import { HotelApiType, HotelPageProps } from "@/utils/types";
 import HotelDetails from "@/components/hotels/HotelDetails";
