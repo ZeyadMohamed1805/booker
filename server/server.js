@@ -30,7 +30,7 @@ server.use(
 		origin: ["https://booker-project.vercel.app"],
 	})
 );
-server.use(function (request, res: Response, next: NextFunction) {
+server.use(function (request, res, next) {
 	// Website you wish to allow to connect
 	res.setHeader(
 		"Access-Control-Allow-Origin",
